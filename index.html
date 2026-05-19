@@ -773,25 +773,79 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
         </div>
       </div>
 
-      <!-- TRANSACTIONS -->
+      <!-- TRANSACTIONS — Payment Dashboard -->
       <div id="tab-transactions" class="admin-section">
-        <h2>All Transactions</h2>
-        <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
-          <input class="admin-table-search" placeholder="Search by ref, name…" oninput="filterTx(this.value)" style="width:100%;max-width:280px"/>
-          <select class="admin-table-search" style="width:auto" onchange="filterTxStatus(this.value)">
-            <option value="">All Statuses</option>
-            <option value="Completed">Completed</option>
-            <option value="Pending">Pending</option>
-            <option value="Processing">Processing</option>
-            <option value="Failed">Failed</option>
-          </select>
+        <!-- Header row -->
+        <div id="pay-dash-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;opacity:0;transform:translateY(-10px);transition:all .4s ease">
+          <h2 style="margin-bottom:0">Payment Dashboard</h2>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <div style="position:relative">
+              <i class="fas fa-search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:0.8rem"></i>
+              <input id="pay-search" class="admin-table-search" placeholder="Search customer, ref, status…"
+                oninput="filterPayments(this.value)"
+                style="width:260px;padding-left:32px;max-width:100%"/>
+            </div>
+            <select id="pay-status-filter" class="admin-table-search" style="width:auto" onchange="filterPaymentsStatus(this.value)">
+              <option value="">All Statuses</option>
+              <option value="successful">Successful</option>
+              <option value="pending">Pending</option>
+              <option value="processing">Processing</option>
+              <option value="failed">Failed</option>
+            </select>
+            <button class="admin-btn" id="pay-refresh-btn" onclick="refreshPayments()">
+              <i class="fas fa-rotate" id="pay-refresh-icon"></i> Refresh
+            </button>
+          </div>
         </div>
-        <div class="admin-table-wrap">
+
+        <!-- Summary cards -->
+        <div id="pay-summary-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px">
+          <div class="admin-stat-card" id="psc-total"><div class="stat-val" id="psc-count">—</div><div class="stat-lbl">Total Payments</div></div>
+          <div class="admin-stat-card" id="psc-vol"><div class="stat-val" id="psc-volume">—</div><div class="stat-lbl">Total Volume</div></div>
+          <div class="admin-stat-card" id="psc-succ"><div class="stat-val" id="psc-success">—</div><div class="stat-lbl">Successful</div></div>
+          <div class="admin-stat-card" id="psc-pend"><div class="stat-val" id="psc-pending">—</div><div class="stat-lbl">Pending / Processing</div></div>
+        </div>
+
+        <!-- Loading state -->
+        <div id="pay-loading" style="display:none;text-align:center;padding:40px;color:var(--gray-400)">
+          <i class="fas fa-spinner fa-spin" style="font-size:1.6rem;margin-bottom:10px;display:block;color:var(--green)"></i>
+          Loading payment records…
+        </div>
+
+        <!-- Table -->
+        <div class="admin-table-wrap" id="pay-table-wrap">
           <div style="overflow-x:auto">
-          <table>
-            <thead><tr><th>Ref</th><th>Sender</th><th>Recipient</th><th>Country</th><th>Amount</th><th>Fee</th><th>Method</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody id="tx-tbody"></tbody>
-          </table>
+            <table>
+              <thead>
+                <tr>
+                  <th onclick="sortPayments('customer_name')" style="cursor:pointer">Customer <i class="fas fa-sort" style="opacity:.4;font-size:0.65rem"></i></th>
+                  <th>Email</th>
+                  <th onclick="sortPayments('amount')" style="cursor:pointer">Amount <i class="fas fa-sort" style="opacity:.4;font-size:0.65rem"></i></th>
+                  <th>Currency</th>
+                  <th onclick="sortPayments('tx_ref')" style="cursor:pointer">Tx Ref <i class="fas fa-sort" style="opacity:.4;font-size:0.65rem"></i></th>
+                  <th>Method</th>
+                  <th>Country</th>
+                  <th onclick="sortPayments('status')" style="cursor:pointer">Status <i class="fas fa-sort" style="opacity:.4;font-size:0.65rem"></i></th>
+                  <th onclick="sortPayments('created_at')" style="cursor:pointer">Date <i class="fas fa-sort" style="opacity:.4;font-size:0.65rem"></i></th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="pay-tbody"></tbody>
+            </table>
+          </div>
+          <!-- Empty state -->
+          <div id="pay-empty" style="display:none;text-align:center;padding:48px;color:var(--gray-400)">
+            <i class="fas fa-inbox" style="font-size:2rem;margin-bottom:10px;display:block;color:var(--gray-200)"></i>
+            No payment records found
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;flex-wrap:wrap;gap:10px">
+          <span id="pay-page-info" style="font-size:0.8rem;color:var(--gray-400)"></span>
+          <div style="display:flex;gap:6px">
+            <button class="admin-btn admin-btn-secondary" id="pay-prev" onclick="payPage(-1)" style="padding:6px 12px;font-size:0.8rem">‹ Prev</button>
+            <button class="admin-btn admin-btn-secondary" id="pay-next" onclick="payPage(1)" style="padding:6px 12px;font-size:0.8rem">Next ›</button>
           </div>
         </div>
       </div>
@@ -1121,6 +1175,14 @@ function switchAdminTab(tab, el){
   if(el && el.classList.contains('admin-mobile-nav-item')) el.classList.add('active');
   // special builds
   if(tab==='rates') buildRatesGrid();
+  if(tab==='transactions'){
+    ALL_PAYMENTS=getPaymentsData();
+    PAY_FILTERED=[...ALL_PAYMENTS];
+    PAY_PAGE=1;
+    updatePaySummary();
+    renderPayTable();
+    setTimeout(()=>{const h=document.getElementById('pay-dash-header');if(h){h.style.opacity='1';h.style.transform='translateY(0)'}},50);
+  }
 }
 
 // ─── SAMPLE DATA ───
@@ -1153,13 +1215,8 @@ function buildAdminData(){
     <td style="color:var(--gray-400)">${t.time}</td></tr>`).join('');
   // All transactions
   const txBody=document.getElementById('tx-tbody');
-  if(txBody) txBody.innerHTML=SAMPLE_TX.map(t=>`
-    <tr><td><code style="font-size:0.75rem;background:var(--gray-100);padding:2px 5px;border-radius:4px">${t.ref}</code></td>
-    <td>${t.sender}</td><td>${t.recip}</td><td>${t.country}</td>
-    <td style="font-weight:700">${t.amt}</td><td style="color:var(--gray-600)">${t.fee}</td>
-    <td>${t.method}</td>
-    <td><span class="status-badge status-${t.status.toLowerCase()}">${t.status}</span></td>
-    <td><button class="admin-btn admin-btn-secondary" style="padding:5px 10px;font-size:0.74rem">View</button></td></tr>`).join('');
+  // tx table now handled by payment dashboard
+  // Payment table handled by refreshPayments()
   // Users
   const usersBody=document.getElementById('users-tbody');
   if(usersBody) usersBody.innerHTML=SAMPLE_USERS.map(u=>`
@@ -1284,6 +1341,172 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('admin-ai-input')?.addEventListener('keydown',e=>e.key==='Enter'&&sendAdminAI());
   document.getElementById('admin-pass')?.addEventListener('keydown',e=>e.key==='Enter'&&adminLogin());
 });
+
+
+// ════ PAYMENT DASHBOARD ════
+let ALL_PAYMENTS=[];
+let PAY_FILTERED=[];
+let PAY_PAGE=1;
+const PAY_PER_PAGE=10;
+let PAY_SORT={field:'created_at',dir:-1};
+
+// Full payment dataset (mapped from SAMPLE_TX + extras)
+function getPaymentsData(){
+  const base=SAMPLE_TX.map((t,i)=>({
+    customer_name:t.sender,
+    email:(t.sender.split(' ')[0].toLowerCase()+'@email.com'),
+    amount:parseFloat(t.amt.replace('$','')),
+    currency:'USD',
+    tx_ref:t.ref,
+    method:t.method,
+    country:t.country,
+    status:t.status.toLowerCase(),
+    fee:t.fee,
+    created_at:new Date(Date.now()-(i*1800000+Math.random()*900000)).toISOString()
+  }));
+  // Add more records
+  const extras=[
+    {customer_name:'Yusuf Adeyemi',email:'yusuf@email.com',amount:180,currency:'USD',tx_ref:'ARR-89234102',method:'Mobile Money',country:'🇳🇬 Nigeria',status:'successful',fee:'$2.70',created_at:new Date(Date.now()-10800000).toISOString()},
+    {customer_name:'Lin Wei',email:'lin@email.com',amount:320,currency:'USD',tx_ref:'ARR-89234088',method:'Bank Transfer',country:'🇨🇳 China',status:'pending',fee:'$4.80',created_at:new Date(Date.now()-14400000).toISOString()},
+    {customer_name:'Amara Diallo',email:'amara@email.com',amount:95,currency:'USD',tx_ref:'ARR-89234055',method:'Mobile Money',country:'🇸🇳 Senegal',status:'successful',fee:'$1.43',created_at:new Date(Date.now()-18000000).toISOString()},
+    {customer_name:'Pedro Santos',email:'pedro@email.com',amount:600,currency:'USD',tx_ref:'ARR-89234021',method:'PIX',country:'🇧🇷 Brazil',status:'successful',fee:'$9.00',created_at:new Date(Date.now()-21600000).toISOString()},
+    {customer_name:'Tariq Hussain',email:'tariq@email.com',amount:250,currency:'USD',tx_ref:'ARR-89233998',method:'JazzCash',country:'🇵🇰 Pakistan',status:'processing',fee:'$3.75',created_at:new Date(Date.now()-25200000).toISOString()},
+  ];
+  return [...base,...extras];
+}
+
+function refreshPayments(){
+  const btn=document.getElementById('pay-refresh-btn');
+  const icon=document.getElementById('pay-refresh-icon');
+  const loading=document.getElementById('pay-loading');
+  const tableWrap=document.getElementById('pay-table-wrap');
+  if(btn) btn.disabled=true;
+  if(icon) icon.className='fas fa-spinner fa-spin';
+  if(loading) loading.style.display='block';
+  if(tableWrap) tableWrap.style.display='none';
+  setTimeout(()=>{
+    ALL_PAYMENTS=getPaymentsData();
+    PAY_FILTERED=[...ALL_PAYMENTS];
+    PAY_PAGE=1;
+    if(loading) loading.style.display='none';
+    if(tableWrap) tableWrap.style.display='block';
+    if(btn) btn.disabled=false;
+    if(icon) icon.className='fas fa-rotate';
+    updatePaySummary();
+    renderPayTable();
+    // Animate header in
+    const hdr=document.getElementById('pay-dash-header');
+    if(hdr){hdr.style.opacity='1';hdr.style.transform='translateY(0)'}
+  },800);
+}
+
+function filterPayments(q){
+  const s=q.toLowerCase();
+  const statusFilter=document.getElementById('pay-status-filter')?.value||'';
+  PAY_FILTERED=ALL_PAYMENTS.filter(p=>{
+    const matchQ=!q||(p.customer_name||'').toLowerCase().includes(s)||(p.tx_ref||'').toLowerCase().includes(s)||(p.email||'').toLowerCase().includes(s)||(p.status||'').toLowerCase().includes(s);
+    const matchS=!statusFilter||p.status===statusFilter;
+    return matchQ&&matchS;
+  });
+  PAY_PAGE=1;
+  renderPayTable();
+}
+function filterPaymentsStatus(s){
+  const q=document.getElementById('pay-search')?.value||'';
+  filterPayments(q);
+}
+
+function sortPayments(field){
+  if(PAY_SORT.field===field) PAY_SORT.dir*=-1;
+  else{PAY_SORT.field=field;PAY_SORT.dir=1}
+  PAY_FILTERED.sort((a,b)=>{
+    let av=a[field]||'',bv=b[field]||'';
+    if(field==='amount'){av=parseFloat(av)||0;bv=parseFloat(bv)||0}
+    if(field==='created_at'){av=new Date(av);bv=new Date(bv)}
+    return av>bv?PAY_SORT.dir:av<bv?-PAY_SORT.dir:0;
+  });
+  renderPayTable();
+}
+
+function payPage(dir){
+  const total=Math.ceil(PAY_FILTERED.length/PAY_PER_PAGE);
+  PAY_PAGE=Math.max(1,Math.min(total,PAY_PAGE+dir));
+  renderPayTable();
+}
+
+function updatePaySummary(){
+  const total=ALL_PAYMENTS.length;
+  const vol=ALL_PAYMENTS.reduce((s,p)=>s+(parseFloat(p.amount)||0),0);
+  const succ=ALL_PAYMENTS.filter(p=>p.status==='successful'||p.status==='completed').length;
+  const pend=ALL_PAYMENTS.filter(p=>p.status==='pending'||p.status==='processing').length;
+  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  el('psc-count',total);
+  el('psc-volume','$'+vol.toLocaleString(undefined,{maximumFractionDigits:0}));
+  el('psc-success',succ);
+  el('psc-pending',pend);
+}
+
+function renderPayTable(){
+  const tbody=document.getElementById('pay-tbody');
+  const empty=document.getElementById('pay-empty');
+  const info=document.getElementById('pay-page-info');
+  const prev=document.getElementById('pay-prev');
+  const next=document.getElementById('pay-next');
+  if(!tbody) return;
+  const start=(PAY_PAGE-1)*PAY_PER_PAGE;
+  const slice=PAY_FILTERED.slice(start,start+PAY_PER_PAGE);
+  const total=Math.ceil(PAY_FILTERED.length/PAY_PER_PAGE);
+  if(info) info.textContent=`Showing ${start+1}–${Math.min(start+PAY_PER_PAGE,PAY_FILTERED.length)} of ${PAY_FILTERED.length} records`;
+  if(prev) prev.disabled=PAY_PAGE<=1;
+  if(next) next.disabled=PAY_PAGE>=total;
+  if(slice.length===0){tbody.innerHTML='';if(empty)empty.style.display='block';return}
+  if(empty) empty.style.display='none';
+  const statusClass=(s)=>{
+    if(s==='successful'||s==='completed') return 'status-completed';
+    if(s==='failed') return 'status-failed';
+    if(s==='processing') return 'status-processing';
+    return 'status-pending';
+  };
+  tbody.innerHTML=slice.map((p,i)=>`
+    <tr style="animation:fadeInRow .25s ease ${i*0.04}s both">
+      <td style="font-weight:600">${escHtml(p.customer_name||'—')}</td>
+      <td style="color:var(--gray-600)">${escHtml(p.email||'—')}</td>
+      <td style="font-weight:700">$${parseFloat(p.amount||0).toFixed(2)}</td>
+      <td>${p.currency||'USD'}</td>
+      <td><code style="font-size:0.73rem;background:var(--gray-100);padding:2px 6px;border-radius:4px">${escHtml(p.tx_ref||'—')}</code></td>
+      <td style="color:var(--gray-600)">${escHtml(p.method||'—')}</td>
+      <td>${p.country||'—'}</td>
+      <td><span class="status-badge ${statusClass(p.status)}">${p.status||'—'}</span></td>
+      <td style="color:var(--gray-400);font-size:0.78rem">${new Date(p.created_at).toLocaleString()}</td>
+      <td>
+        <div style="display:flex;gap:5px">
+          <button class="admin-btn" style="padding:4px 10px;font-size:0.72rem" onclick="viewPayment(${start+i})"><i class="fas fa-eye"></i></button>
+          <button class="admin-btn admin-btn-danger" style="padding:4px 10px;font-size:0.72rem" onclick="flagPayment(${start+i})"><i class="fas fa-flag"></i></button>
+        </div>
+      </td>
+    </tr>`).join('');
+}
+
+function viewPayment(idx){
+  const p=PAY_FILTERED[idx];
+  if(!p) return;
+  alert(`📋 Payment Details\n\nCustomer: ${p.customer_name}\nEmail: ${p.email}\nAmount: $${p.amount} ${p.currency}\nTx Ref: ${p.tx_ref}\nMethod: ${p.method}\nCountry: ${p.country}\nStatus: ${p.status}\nDate: ${new Date(p.created_at).toLocaleString()}\nFee: ${p.fee||'N/A'}`);
+}
+function flagPayment(idx){
+  const p=PAY_FILTERED[idx];
+  if(!p) return;
+  if(confirm(`Flag transaction ${p.tx_ref} for review?`)){
+    p.status='pending';
+    renderPayTable();
+    updatePaySummary();
+  }
+}
+
+// Inject fade-in animation for rows
+const payStyle=document.createElement('style');
+payStyle.textContent=`@keyframes fadeInRow{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}`;
+document.head.appendChild(payStyle);
+
 </script>
 </body>
 </html>
