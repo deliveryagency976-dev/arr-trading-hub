@@ -126,13 +126,7 @@ select.field{appearance:none;cursor:pointer;background-image:url("data:image/svg
 .step h4{font-size:0.9rem;font-weight:700;margin-bottom:6px}
 .step p{color:var(--gray-600);font-size:0.8rem;line-height:1.6}
 
-/* COUNTRIES */
-.countries-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;max-width:1100px;margin:0 auto}
-.country-card{border:2px solid var(--gray-200);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .22s;background:#fff}
-.country-card:hover{border-color:var(--green);background:var(--green-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,163,74,0.12)}
-.country-flag{font-size:1.8rem;margin-bottom:6px}
-.country-name{font-size:0.79rem;font-weight:700;color:var(--gray-900)}
-.country-currency{font-size:0.68rem;color:var(--gray-400);margin-top:2px}
+
 
 /* P2P */
 .p2p-section{background:linear-gradient(135deg,#052e16 0%,#14532d 60%,#166534 100%);padding:64px 5%;text-align:center;position:relative;overflow:hidden}
@@ -349,6 +343,7 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
 .ai-send-btn i{color:#fff;font-size:0.82rem}
 @media(max-width:400px){.ai-chat-window{width:calc(100vw - 32px);right:16px;bottom:80px}}
 </style>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
 </head>
 <body>
 
@@ -362,7 +357,7 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
     </a>
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
-      <li><a href="#countries">Countries</a></li>
+      
       <li><a href="#trust">Why Us</a></li>
       <li><a href="#p2p">P2P</a></li>
     </ul>
@@ -377,7 +372,7 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
 
   <div class="mobile-menu" id="mobile-menu">
     <a href="#how" onclick="closeMenu()">How It Works</a>
-    <a href="#countries" onclick="closeMenu()">Countries</a>
+    
     <a href="#trust" onclick="closeMenu()">Why Us</a>
     <a href="#p2p" onclick="closeMenu()">P2P</a>
     <a href="#" onclick="showPage('page-register');closeMenu();return false">Sign In / Register</a>
@@ -393,7 +388,7 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
         <span class="sub">to 40+ Countries Worldwide</span>
       </h1>
       <p class="hero-desc">No hidden fees. Real exchange rates. Send to family, pay suppliers, or fund any account — fast, safe, and fully supported.</p>
-      <a href="#countries" class="btn-hero"><i class="fas fa-paper-plane"></i> Send Money Now</a>
+      <a href="#" onclick="document.getElementById('hero-country').focus();return false" class="btn-hero"><i class="fas fa-paper-plane"></i> Send Money Now</a>
       <div class="hero-perks">
         <span class="perk"><i class="fas fa-check-circle"></i> No Registration Needed</span>
         <span class="perk"><i class="fas fa-check-circle"></i> Bank-level Security</span>
@@ -498,45 +493,6 @@ input:checked+.toggle-slider::before{transform:translateX(20px)}
       <div class="step"><div class="step-num">1</div><div class="step-icon">🌍</div><h4>Choose Country</h4><p>Pick your destination and enter the USD amount to send.</p></div>
       <div class="step"><div class="step-num">2</div><div class="step-icon">📋</div><h4>Fill Details</h4><p>Enter the recipient's bank or mobile wallet info.</p></div>
       <div class="step"><div class="step-num">3</div><div class="step-icon">✅</div><h4>Confirm & Send</h4><p>Review, pay securely — transfer is on its way.</p></div>
-    </div>
-  </section>
-
-  <!-- COUNTRIES -->
-  <section class="section" id="countries">
-    <div class="section-hdr">
-      <span class="tag">40+ Destinations</span>
-      <h2>Where We Send To</h2>
-      <p>Tap any country to start a transfer there instantly.</p>
-    </div>
-    <div class="countries-grid">
-      <div class="country-card" onclick="quickSelect('NG')"><div class="country-flag">🇳🇬</div><div class="country-name">Nigeria</div><div class="country-currency">NGN</div></div>
-      <div class="country-card" onclick="quickSelect('GH')"><div class="country-flag">🇬🇭</div><div class="country-name">Ghana</div><div class="country-currency">GHS</div></div>
-      <div class="country-card" onclick="quickSelect('KE')"><div class="country-flag">🇰🇪</div><div class="country-name">Kenya</div><div class="country-currency">KES</div></div>
-      <div class="country-card" onclick="quickSelect('ZA')"><div class="country-flag">🇿🇦</div><div class="country-name">South Africa</div><div class="country-currency">ZAR</div></div>
-      <div class="country-card" onclick="quickSelect('UG')"><div class="country-flag">🇺🇬</div><div class="country-name">Uganda</div><div class="country-currency">UGX</div></div>
-      <div class="country-card" onclick="quickSelect('TZ')"><div class="country-flag">🇹🇿</div><div class="country-name">Tanzania</div><div class="country-currency">TZS</div></div>
-      <div class="country-card" onclick="quickSelect('RW')"><div class="country-flag">🇷🇼</div><div class="country-name">Rwanda</div><div class="country-currency">RWF</div></div>
-      <div class="country-card" onclick="quickSelect('SN')"><div class="country-flag">🇸🇳</div><div class="country-name">Senegal</div><div class="country-currency">XOF</div></div>
-      <div class="country-card" onclick="quickSelect('CI')"><div class="country-flag">🇨🇮</div><div class="country-name">Côte d'Ivoire</div><div class="country-currency">XOF</div></div>
-      <div class="country-card" onclick="quickSelect('CM')"><div class="country-flag">🇨🇲</div><div class="country-name">Cameroon</div><div class="country-currency">XAF</div></div>
-      <div class="country-card" onclick="quickSelect('ET')"><div class="country-flag">🇪🇹</div><div class="country-name">Ethiopia</div><div class="country-currency">ETB</div></div>
-      <div class="country-card" onclick="quickSelect('EG')"><div class="country-flag">🇪🇬</div><div class="country-name">Egypt</div><div class="country-currency">EGP</div></div>
-      <div class="country-card" onclick="quickSelect('MA')"><div class="country-flag">🇲🇦</div><div class="country-name">Morocco</div><div class="country-currency">MAD</div></div>
-      <div class="country-card" onclick="quickSelect('BD')"><div class="country-flag">🇧🇩</div><div class="country-name">Bangladesh</div><div class="country-currency">BDT</div></div>
-      <div class="country-card" onclick="quickSelect('PK')"><div class="country-flag">🇵🇰</div><div class="country-name">Pakistan</div><div class="country-currency">PKR</div></div>
-      <div class="country-card" onclick="quickSelect('IN')"><div class="country-flag">🇮🇳</div><div class="country-name">India</div><div class="country-currency">INR</div></div>
-      <div class="country-card" onclick="quickSelect('PH')"><div class="country-flag">🇵🇭</div><div class="country-name">Philippines</div><div class="country-currency">PHP</div></div>
-      <div class="country-card" onclick="quickSelect('ID')"><div class="country-flag">🇮🇩</div><div class="country-name">Indonesia</div><div class="country-currency">IDR</div></div>
-      <div class="country-card" onclick="quickSelect('VN')"><div class="country-flag">🇻🇳</div><div class="country-name">Vietnam</div><div class="country-currency">VND</div></div>
-      <div class="country-card" onclick="quickSelect('MX')"><div class="country-flag">🇲🇽</div><div class="country-name">Mexico</div><div class="country-currency">MXN</div></div>
-      <div class="country-card" onclick="quickSelect('CO')"><div class="country-flag">🇨🇴</div><div class="country-name">Colombia</div><div class="country-currency">COP</div></div>
-      <div class="country-card" onclick="quickSelect('BR')"><div class="country-flag">🇧🇷</div><div class="country-name">Brazil</div><div class="country-currency">BRL</div></div>
-      <div class="country-card" onclick="quickSelect('PE')"><div class="country-flag">🇵🇪</div><div class="country-name">Peru</div><div class="country-currency">PEN</div></div>
-      <div class="country-card" onclick="quickSelect('TH')"><div class="country-flag">🇹🇭</div><div class="country-name">Thailand</div><div class="country-currency">THB</div></div>
-      <div class="country-card" onclick="quickSelect('TR')"><div class="country-flag">🇹🇷</div><div class="country-name">Turkey</div><div class="country-currency">TRY</div></div>
-      <div class="country-card" onclick="quickSelect('UA')"><div class="country-flag">🇺🇦</div><div class="country-name">Ukraine</div><div class="country-currency">UAH</div></div>
-      <div class="country-card" onclick="quickSelect('PL')"><div class="country-flag">🇵🇱</div><div class="country-name">Poland</div><div class="country-currency">PLN</div></div>
-      <div class="country-card" onclick="quickSelect('BTC')"><div class="country-flag">₿</div><div class="country-name">Crypto</div><div class="country-currency">BTC / USDT</div></div>
     </div>
   </section>
 
@@ -1075,11 +1031,7 @@ function setAmt(v,btn){
   document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('hero-amount').value=v; sendAmt=v;
-}
-function quickSelect(code){
-  const sel=document.getElementById('hero-country');
-  sel.value=code; updateHeroMethods();
-  window.scrollTo({top:0,behavior:'smooth'});
+});
 }
 function proceedToCheckout(){
   const sel=document.getElementById('hero-country');
@@ -1142,7 +1094,46 @@ function buildBankFields(code){
   }
   c.innerHTML=h;
 }
-function submitPayment(){showPage('page-success')}
+function submitPayment(){
+  const firstName = document.getElementById('recip-first')?.value?.trim() || 'Customer';
+  const lastName  = document.getElementById('recip-last')?.value?.trim()  || '';
+  const email     = document.querySelector('#page-checkout input[type=email]')?.value?.trim() || 'customer@arrtradinghub.com';
+  const phone     = document.querySelector('#page-checkout input[type=tel]')?.value?.trim()   || '08000000000';
+  const d = CD[selCountry] || {};
+  const fee = +(sendAmt * 0.015).toFixed(2);
+
+  if(!firstName){ alert('Please enter recipient first name.'); return; }
+
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXX-X", // ← replace with your live key
+    tx_ref: "ARR-" + Date.now(),
+    amount: sendAmt,
+    currency: "USD",
+    payment_options: "card, banktransfer, ussd",
+    redirect_url: window.location.href.split('?')[0] + "?payment=success",
+    customer: {
+      email: email,
+      phone_number: phone,
+      name: firstName + (lastName ? " " + lastName : ""),
+    },
+    customizations: {
+      title: "ARR Trading Hub",
+      description: "Send " + sendAmt.toFixed(2) + " USD to " + (d.name||selCountry) + " (" + d.cur + ")",
+      logo: "https://media.base44.com/images/public/6a0c7d676fee8af5174c66b8/00cfc2d5e_generated_image.png",
+    },
+    callback: function(response) {
+      if(response.status === "successful" || response.charge_response_code === "00") {
+        document.getElementById('ref-num').textContent = response.transaction_id || response.tx_ref || ('ARR-'+Date.now().toString().slice(-8));
+        showPage('page-success');
+      } else {
+        alert("Payment was not completed. Please try again.");
+      }
+    },
+    onclose: function() {
+      // user closed modal — stay on checkout page silently
+    }
+  });
+}
 
 // ─── ADMIN AUTH ───
 function adminLogin(){
@@ -1337,6 +1328,14 @@ function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 
 // Enter keys for AI
 document.addEventListener('DOMContentLoaded',()=>{
+  // Auto-show success if redirected back from Flutterwave
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('payment')==='success'){
+    const txId = params.get('transaction_id') || params.get('tx_ref') || ('ARR-'+Date.now().toString().slice(-8));
+    document.getElementById('ref-num').textContent = txId;
+    showPage('page-success');
+  }
+
   document.getElementById('ai-input')?.addEventListener('keydown',e=>e.key==='Enter'&&sendAI());
   document.getElementById('admin-ai-input')?.addEventListener('keydown',e=>e.key==='Enter'&&sendAdminAI());
   document.getElementById('admin-pass')?.addEventListener('keydown',e=>e.key==='Enter'&&adminLogin());
