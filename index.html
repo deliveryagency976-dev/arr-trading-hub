@@ -1,409 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ARR Trading Hub – Send USD Payments Securely Worldwide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --green:#16a34a;--green-dark:#15803d;--green-light:#22c55e;
-      --green-pale:#f0fdf4;--green-mid:#dcfce7;
-      --gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;
-      --gray-600:#4b5563;--gray-700:#374151;--gray-900:#111827;
-      --shadow:0 4px 24px rgba(0,0,0,0.08);
-      --radius:14px;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;color:var(--gray-900);background:#fff;overflow-x:hidden}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>ARR Trading Hub – Send USD Worldwide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#16a34a;--green-dark:#15803d;--green-light:#22c55e;
+  --green-pale:#f0fdf4;--green-mid:#dcfce7;
+  --gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;
+  --gray-600:#4b5563;--gray-700:#374151;--gray-900:#111827;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);--radius:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--gray-900);background:#fff;overflow-x:hidden}
+.page{display:none}.page.active{display:block}
 
-    /* ─── NAV ─── */
-    nav{
-      position:sticky;top:0;z-index:200;
-      background:#fff;border-bottom:1px solid var(--gray-200);
-      padding:0 5%;height:68px;
-      display:flex;align-items:center;justify-content:space-between;
-      box-shadow:0 2px 16px rgba(0,0,0,0.06);
-    }
-    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo-icon{
-      width:40px;height:40px;border-radius:11px;
-      background:linear-gradient(135deg,var(--green),var(--green-light));
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:900;font-size:18px;letter-spacing:-1px;
-    }
-    .logo-text{font-size:1.18rem;font-weight:800;color:var(--gray-900)}
-    .logo-text span{color:var(--green)}
-    .nav-links{display:flex;gap:28px;list-style:none}
-    .nav-links a{text-decoration:none;color:var(--gray-600);font-size:0.87rem;font-weight:500;transition:color .2s}
-    .nav-links a:hover{color:var(--green)}
-    .nav-right{display:flex;align-items:center;gap:10px}
-    .nav-login{color:var(--gray-700);font-size:0.87rem;font-weight:600;text-decoration:none;padding:8px 14px;border-radius:8px;border:1.5px solid var(--gray-200);transition:all .2s}
-    .nav-login:hover{border-color:var(--green);color:var(--green)}
-    .nav-cta{
-      background:var(--green);color:#fff;
-      padding:9px 20px;border-radius:8px;
-      text-decoration:none;font-weight:700;font-size:0.87rem;
-      transition:background .2s;
-    }
-    .nav-cta:hover{background:var(--green-dark)}
-    @media(max-width:700px){.nav-links{display:none}}
+/* ═══ NAV ═══ */
+nav{position:sticky;top:0;z-index:300;background:#fff;border-bottom:1px solid var(--gray-200);padding:0 4%;height:62px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 16px rgba(0,0,0,0.06)}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:17px;flex-shrink:0}
+.logo-text{font-size:1.08rem;font-weight:800;color:var(--gray-900)}.logo-text span{color:var(--green)}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray-600);font-size:0.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-login{color:var(--gray-700);font-size:0.84rem;font-weight:600;text-decoration:none;padding:7px 13px;border-radius:8px;border:1.5px solid var(--gray-200);transition:all .2s}
+.nav-login:hover{border-color:var(--green);color:var(--green)}
+.nav-cta{background:var(--green);color:#fff;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.84rem;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--green-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:none}
+.hamburger span{width:22px;height:2px;background:var(--gray-700);border-radius:2px;display:block;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gray-200);z-index:299;padding:16px 4%;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:12px 0;color:var(--gray-700);text-decoration:none;font-weight:600;font-size:0.93rem;border-bottom:1px solid var(--gray-100)}
+.mobile-menu a:last-child{border-bottom:none}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-right .nav-login{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:400px){.logo-text{font-size:0.95rem}}
 
-    /* ─── PAGE SYSTEM ─── */
-    .page{display:none}
-    .page.active{display:block}
+/* ═══ HERO ═══ */
+.hero{display:flex;flex-wrap:wrap;min-height:auto;overflow:hidden}
+.hero-left{flex:1;min-width:280px;background:linear-gradient(150deg,#031a0d 0%,#052e16 30%,#14532d 65%,#166534 100%);padding:60px 5% 60px 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;border:60px solid rgba(255,255,255,0.03)}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(74,222,128,0.15);color:#86efac;padding:6px 14px;border-radius:30px;font-size:0.73rem;font-weight:700;margin-bottom:22px;border:1px solid rgba(74,222,128,0.25);width:fit-content;letter-spacing:0.05em;text-transform:uppercase}
+.hero-left h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:18px;color:#fff}
+.hero-left h1 .accent{display:block;color:#4ade80;text-shadow:0 0 40px rgba(74,222,128,0.35)}
+.hero-left h1 .sub{display:block;color:rgba(255,255,255,0.55);font-size:0.52em;font-weight:600;margin-top:7px}
+.hero-desc{color:#a7f3d0;font-size:0.93rem;line-height:1.75;margin-bottom:28px;max-width:420px}
+.btn-hero{display:inline-flex;align-items:center;gap:9px;background:#4ade80;color:#052e16;padding:14px 28px;border-radius:12px;font-weight:800;font-size:0.95rem;text-decoration:none;width:fit-content;box-shadow:0 8px 28px rgba(74,222,128,0.4);transition:all .2s}
+.btn-hero:hover{background:#86efac;transform:translateY(-2px)}
+.hero-perks{display:flex;gap:8px;margin-top:24px;flex-wrap:wrap}
+.perk{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:8px;color:#bbf7d0;font-size:0.73rem;font-weight:600}
+.perk i{color:#4ade80;font-size:0.78rem}
 
-    /* ─── HERO ─── */
-    .hero{display:flex;flex-wrap:wrap;min-height:600px;overflow:hidden}
-    .hero-left{
-      flex:1;min-width:300px;
-      background:linear-gradient(150deg,#031a0d 0%,#052e16 30%,#14532d 65%,#166534 100%);
-      padding:80px 56px 80px 5%;
-      display:flex;flex-direction:column;justify-content:center;
-      position:relative;overflow:hidden;
-    }
-    .hero-left::before{
-      content:'';position:absolute;top:-100px;right:-100px;
-      width:500px;height:500px;border-radius:50%;
-      border:70px solid rgba(255,255,255,0.03);
-    }
-    .hero-badge{
-      display:inline-flex;align-items:center;gap:7px;
-      background:rgba(74,222,128,0.15);color:#86efac;
-      padding:7px 15px;border-radius:30px;
-      font-size:0.76rem;font-weight:700;margin-bottom:26px;
-      border:1px solid rgba(74,222,128,0.25);
-      width:fit-content;letter-spacing:0.05em;text-transform:uppercase;
-    }
-    .hero-left h1{
-      font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:900;
-      line-height:1.08;letter-spacing:-0.03em;margin-bottom:22px;color:#fff;
-    }
-    .hero-left h1 .accent{display:block;color:#4ade80;text-shadow:0 0 40px rgba(74,222,128,0.35)}
-    .hero-left h1 .sub{
-      display:block;color:rgba(255,255,255,0.55);
-      font-size:0.55em;font-weight:600;letter-spacing:0.01em;margin-top:8px;
-    }
-    .hero-desc{color:#a7f3d0;font-size:0.97rem;line-height:1.78;margin-bottom:32px;max-width:440px}
-    .btn-hero{
-      display:inline-flex;align-items:center;gap:9px;
-      background:#4ade80;color:#052e16;
-      padding:15px 32px;border-radius:12px;
-      font-weight:800;font-size:0.97rem;text-decoration:none;width:fit-content;
-      box-shadow:0 8px 28px rgba(74,222,128,0.4);
-      transition:all .2s;
-    }
-    .btn-hero:hover{background:#86efac;transform:translateY(-2px)}
-    .hero-perks{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
-    .perk{
-      display:flex;align-items:center;gap:7px;
-      background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
-      padding:7px 13px;border-radius:8px;color:#bbf7d0;font-size:0.76rem;font-weight:600;
-    }
-    .perk i{color:#4ade80;font-size:0.8rem}
+/* HERO CARD */
+.hero-right{width:100%;max-width:400px;background:#fff;display:flex;align-items:center;justify-content:center;padding:32px 5%;border-left:1px solid var(--gray-200)}
+.hero-card{background:#fff;border-radius:18px;padding:22px;width:100%;max-width:340px;box-shadow:0 4px 32px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.04)}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card-header h3{font-size:0.97rem;font-weight:800;color:var(--gray-900)}
+.secure-badge{background:var(--green-mid);color:var(--green-dark);font-size:0.65rem;font-weight:700;padding:3px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:0.04em}
+.field-label{font-size:0.71rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px}
+.field{width:100%;border:2px solid var(--gray-200);border-radius:9px;padding:10px 12px;font-size:0.88rem;font-family:inherit;margin-bottom:10px;outline:none;transition:border .2s;color:var(--gray-900);background:#fff}
+.field:focus{border-color:var(--green)}
+select.field{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:18px;padding-right:34px}
+.amount-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.amount-btn{border:2px solid var(--gray-200);background:#fff;border-radius:9px;padding:9px;text-align:center;cursor:pointer;font-weight:700;font-size:0.88rem;color:var(--gray-700);transition:all .2s;font-family:inherit}
+.amount-btn:hover,.amount-btn.active{border-color:var(--green);color:var(--green);background:var(--green-pale)}
+.method-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.method-item{display:flex;align-items:center;justify-content:space-between;border:2px solid var(--gray-200);border-radius:9px;padding:9px 11px;cursor:pointer;transition:all .2s;background:#fff}
+.method-item:hover,.method-item.selected{border-color:var(--green);background:var(--green-pale)}
+.method-left{display:flex;align-items:center;gap:8px}
+.method-icon{font-size:1rem;width:20px;text-align:center}
+.method-name{font-size:0.83rem;font-weight:600;color:var(--gray-900)}
+.method-speed{font-size:0.68rem;color:var(--gray-400);margin-top:1px}
+.method-check{color:var(--green);font-size:0.82rem;opacity:0;transition:opacity .2s}
+.method-item.selected .method-check{opacity:1}
+.pay-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:10px;padding:13px;font-size:0.95rem;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(22,163,74,0.3)}
+.pay-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.card-note{text-align:center;color:var(--gray-400);font-size:0.69rem;margin-top:8px}
 
-    /* ─── HERO RIGHT PANEL ─── */
-    .hero-right{
-      width:420px;flex-shrink:0;background:#fff;
-      display:flex;align-items:center;justify-content:center;
-      padding:40px 5% 40px 32px;
-      border-left:1px solid var(--gray-200);
-    }
-    .hero-card{
-      background:#fff;border-radius:20px;padding:26px;
-      width:100%;max-width:360px;
-      box-shadow:0 4px 32px rgba(0,0,0,0.1),0 0 0 1px rgba(0,0,0,0.04);
-    }
-    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-    .card-header h3{font-size:1rem;font-weight:800;color:var(--gray-900)}
-    .secure-badge{
-      background:var(--green-mid);color:var(--green-dark);
-      font-size:0.66rem;font-weight:700;padding:3px 9px;
-      border-radius:6px;text-transform:uppercase;letter-spacing:0.04em;
-    }
-    .field-label{font-size:0.73rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px}
-    .field{
-      width:100%;border:2px solid var(--gray-200);border-radius:9px;
-      padding:10px 12px;font-size:0.88rem;font-family:inherit;
-      margin-bottom:12px;outline:none;transition:border .2s;color:var(--gray-900);
-      background:#fff;
-    }
-    .field:focus{border-color:var(--green)}
-    select.field{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:18px;padding-right:34px}
-    .amount-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-    .amount-btn{
-      border:2px solid var(--gray-200);background:#fff;
-      border-radius:9px;padding:9px;text-align:center;
-      cursor:pointer;font-weight:700;font-size:0.9rem;
-      color:var(--gray-700);transition:all .2s;font-family:inherit;
-    }
-    .amount-btn:hover,.amount-btn.active{border-color:var(--green);color:var(--green);background:var(--green-pale)}
-    .pay-btn{
-      width:100%;background:var(--green);color:#fff;
-      border:none;border-radius:10px;padding:13px;
-      font-size:0.97rem;font-weight:800;cursor:pointer;
-      font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;
-      transition:all .2s;box-shadow:0 4px 16px rgba(22,163,74,0.3);
-    }
-    .pay-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
-    .card-note{text-align:center;color:var(--gray-400);font-size:0.71rem;margin-top:9px}
+@media(max-width:860px){
+  .hero{flex-direction:column}
+  .hero-right{max-width:100%;border-left:none;border-top:1px solid var(--gray-200);padding:28px 5%}
+  .hero-card{max-width:100%}
+}
 
-    /* ─── STATS ─── */
-    .stats{display:flex;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--gray-200);background:#fff}
-    .stat{text-align:center;padding:28px 36px;border-right:1px solid var(--gray-200)}
-    .stat:last-child{border-right:none}
-    .stat-num{font-size:1.9rem;font-weight:800;color:var(--green)}
-    .stat-label{color:var(--gray-600);font-size:0.81rem;margin-top:3px}
+/* ═══ STATS ═══ */
+.stats{display:flex;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--gray-200);background:#fff}
+.stat{text-align:center;padding:22px 28px;border-right:1px solid var(--gray-200);flex:1;min-width:120px}
+.stat:last-child{border-right:none}
+.stat-num{font-size:1.7rem;font-weight:800;color:var(--green)}
+.stat-label{color:var(--gray-600);font-size:0.78rem;margin-top:2px}
 
-    /* ─── FAMILY SECTION ─── */
-    .family-section{
-      display:flex;flex-wrap:wrap;align-items:center;
-      padding:64px 5%;gap:48px;background:#fff;
-    }
-    .family-img{
-      flex:1;min-width:280px;max-width:500px;border-radius:20px;overflow:hidden;
-      box-shadow:0 12px 48px rgba(0,0,0,0.12);
-    }
-    .family-img img{width:100%;height:360px;object-fit:cover;display:block}
-    .family-text{flex:1;min-width:280px}
-    .family-text .tag{margin-bottom:12px}
-    .family-text h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:14px;line-height:1.2}
-    .family-text p{color:var(--gray-600);font-size:0.95rem;line-height:1.75;margin-bottom:20px}
-    .family-points{display:flex;flex-direction:column;gap:10px}
-    .family-point{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:var(--gray-700)}
-    .family-point i{color:var(--green);margin-top:2px;flex-shrink:0}
+/* ═══ SECTIONS ═══ */
+.section{padding:56px 5%}
+.section-alt{background:#f9fafb}
+.section-hdr{text-align:center;margin-bottom:40px}
+.tag{display:inline-block;background:var(--green-mid);color:var(--green-dark);padding:4px 13px;border-radius:20px;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.section-hdr h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:8px}
+.section-hdr p{color:var(--gray-600);font-size:0.91rem;max-width:460px;margin:0 auto;line-height:1.7}
 
-    /* ─── HOW IT WORKS ─── */
-    .how{background:#f9fafb;padding:72px 5%}
-    .section-hdr{text-align:center;margin-bottom:44px}
-    .tag{
-      display:inline-block;background:var(--green-mid);color:var(--green-dark);
-      padding:4px 13px;border-radius:20px;font-size:0.74rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;
-    }
-    .section-hdr h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;margin-bottom:10px}
-    .section-hdr p{color:var(--gray-600);font-size:0.93rem;max-width:480px;margin:0 auto;line-height:1.7}
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;max-width:900px;margin:0 auto}
-    .step{background:#fff;border-radius:var(--radius);padding:28px 20px;text-align:center;box-shadow:var(--shadow);position:relative}
-    .step-num{
-      position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-      background:var(--green);color:#fff;
-      width:28px;height:28px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.75rem;font-weight:800;
-    }
-    .step-icon{font-size:1.9rem;margin-bottom:12px;margin-top:6px}
-    .step h4{font-size:0.93rem;font-weight:700;margin-bottom:7px}
-    .step p{color:var(--gray-600);font-size:0.82rem;line-height:1.65}
+/* FAMILY */
+.family-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+.family-img{flex:1;min-width:260px;border-radius:18px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,0.12)}
+.family-img img{width:100%;height:320px;object-fit:cover;display:block}
+.family-text{flex:1;min-width:260px}
+.family-text h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:12px;line-height:1.2}
+.family-text p{color:var(--gray-600);font-size:0.91rem;line-height:1.75;margin-bottom:16px}
+.family-points{display:flex;flex-direction:column;gap:9px}
+.family-point{display:flex;align-items:flex-start;gap:9px;font-size:0.86rem;color:var(--gray-700)}
+.family-point i{color:var(--green);margin-top:2px;flex-shrink:0}
 
-    /* ─── COUNTRIES ─── */
-    .countries-section{padding:72px 5%;background:#fff}
-    .countries-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-      gap:14px;max-width:1100px;margin:0 auto;
-    }
-    .country-card{
-      border:2px solid var(--gray-200);border-radius:12px;
-      padding:16px 12px;text-align:center;cursor:pointer;
-      transition:all .22s;background:#fff;
-    }
-    .country-card:hover{border-color:var(--green);background:var(--green-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,163,74,0.12)}
-    .country-flag{font-size:2rem;margin-bottom:7px}
-    .country-name{font-size:0.82rem;font-weight:700;color:var(--gray-900)}
-    .country-currency{font-size:0.71rem;color:var(--gray-400);margin-top:2px}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;max-width:860px;margin:0 auto}
+.step{background:#fff;border-radius:var(--radius);padding:24px 18px;text-align:center;box-shadow:var(--shadow);position:relative}
+.step-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800}
+.step-icon{font-size:1.7rem;margin-bottom:10px;margin-top:4px}
+.step h4{font-size:0.9rem;font-weight:700;margin-bottom:6px}
+.step p{color:var(--gray-600);font-size:0.8rem;line-height:1.6}
 
-    /* ─── P2P SECTION ─── */
-    .p2p-section{
-      background:linear-gradient(135deg,#052e16 0%,#14532d 60%,#166534 100%);
-      padding:72px 5%;text-align:center;position:relative;overflow:hidden;
-    }
-    .p2p-section::before{
-      content:'';position:absolute;top:-120px;right:-120px;
-      width:400px;height:400px;border-radius:50%;
-      border:60px solid rgba(255,255,255,0.04);
-    }
-    .p2p-badge{
-      display:inline-flex;align-items:center;gap:8px;
-      background:rgba(74,222,128,0.18);color:#86efac;
-      padding:7px 18px;border-radius:30px;font-size:0.76rem;
-      font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
-      border:1px solid rgba(74,222,128,0.3);margin-bottom:20px;
-    }
-    .p2p-section h2{font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:900;color:#fff;margin-bottom:14px;line-height:1.15}
-    .p2p-section p{color:#a7f3d0;font-size:0.95rem;max-width:520px;margin:0 auto 32px;line-height:1.75}
-    .p2p-features{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:36px}
-    .p2p-feat{
-      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
-      border-radius:10px;padding:14px 20px;color:#bbf7d0;font-size:0.84rem;font-weight:600;
-      display:flex;align-items:center;gap:9px;
-    }
-    .p2p-feat i{color:#4ade80}
-    .coming-soon-badge{
-      display:inline-flex;align-items:center;gap:8px;
-      background:#fef3c7;color:#92400e;
-      padding:12px 28px;border-radius:50px;
-      font-size:0.92rem;font-weight:800;
-      box-shadow:0 4px 20px rgba(0,0,0,0.2);
-    }
+/* COUNTRIES */
+.countries-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;max-width:1100px;margin:0 auto}
+.country-card{border:2px solid var(--gray-200);border-radius:12px;padding:14px 10px;text-align:center;cursor:pointer;transition:all .22s;background:#fff}
+.country-card:hover{border-color:var(--green);background:var(--green-pale);transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,163,74,0.12)}
+.country-flag{font-size:1.8rem;margin-bottom:6px}
+.country-name{font-size:0.79rem;font-weight:700;color:var(--gray-900)}
+.country-currency{font-size:0.68rem;color:var(--gray-400);margin-top:2px}
 
-    /* ─── TRUST ─── */
-    .trust{background:#f9fafb;padding:72px 5%}
-    .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:900px;margin:0 auto}
-    .trust-card{background:#fff;border-radius:var(--radius);padding:28px 22px;box-shadow:var(--shadow)}
-    .trust-card i{font-size:1.7rem;color:var(--green);margin-bottom:14px}
-    .trust-card h4{font-size:0.95rem;font-weight:700;margin-bottom:8px}
-    .trust-card p{color:var(--gray-600);font-size:0.83rem;line-height:1.65}
+/* P2P */
+.p2p-section{background:linear-gradient(135deg,#052e16 0%,#14532d 60%,#166534 100%);padding:64px 5%;text-align:center;position:relative;overflow:hidden}
+.p2p-section::before{content:'';position:absolute;top:-100px;right:-100px;width:350px;height:350px;border-radius:50%;border:55px solid rgba(255,255,255,0.04)}
+.p2p-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(74,222,128,0.18);color:#86efac;padding:6px 16px;border-radius:30px;font-size:0.73rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:1px solid rgba(74,222,128,0.3);margin-bottom:18px}
+.p2p-section h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.15}
+.p2p-section p{color:#a7f3d0;font-size:0.92rem;max-width:500px;margin:0 auto 28px;line-height:1.75}
+.p2p-features{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:32px}
+.p2p-feat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 18px;color:#bbf7d0;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.p2p-feat i{color:#4ade80}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:8px;background:#fef3c7;color:#92400e;padding:11px 26px;border-radius:50px;font-size:0.9rem;font-weight:800;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
 
-    /* ─── REGISTER CTA ─── */
-    .register-cta{
-      background:#fff;border-top:1px solid var(--gray-200);
-      padding:60px 5%;display:flex;flex-wrap:wrap;
-      align-items:center;justify-content:space-between;gap:28px;
-    }
-    .register-cta-text h2{font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;margin-bottom:8px}
-    .register-cta-text p{color:var(--gray-600);font-size:0.9rem;max-width:440px;line-height:1.7}
-    .btn-primary{
-      display:inline-flex;align-items:center;gap:9px;
-      background:var(--green);color:#fff;
-      padding:14px 30px;border-radius:11px;
-      font-weight:800;font-size:0.95rem;text-decoration:none;
-      box-shadow:0 6px 20px rgba(22,163,74,0.3);
-      transition:all .2s;white-space:nowrap;
-    }
-    .btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
+/* TRUST */
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.trust-card{background:#fff;border-radius:var(--radius);padding:24px 20px;box-shadow:var(--shadow)}
+.trust-card i{font-size:1.6rem;color:var(--green);margin-bottom:12px}
+.trust-card h4{font-size:0.92rem;font-weight:700;margin-bottom:7px}
+.trust-card p{color:var(--gray-600);font-size:0.8rem;line-height:1.65}
 
-    /* ─── FOOTER ─── */
-    footer{background:var(--gray-900);padding:40px 5%;color:var(--gray-400);font-size:0.82rem}
-    .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
-    .footer-brand{display:flex;align-items:center;gap:9px;text-decoration:none}
-    .footer-logo-icon{
-      width:32px;height:32px;border-radius:8px;
-      background:linear-gradient(135deg,var(--green),var(--green-light));
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:900;font-size:14px;
-    }
-    .footer-brand-text{color:#fff;font-weight:700;font-size:0.95rem}
-    .footer-links{display:flex;gap:20px}
-    .footer-links a{color:var(--gray-400);text-decoration:none;transition:color .2s}
-    .footer-links a:hover{color:#fff}
-    .footer-copy{margin-top:20px;border-top:1px solid #374151;padding-top:20px;text-align:center}
+/* REGISTER CTA */
+.register-cta{background:#fff;border-top:1px solid var(--gray-200);padding:52px 5%;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.register-cta-text h2{font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:800;margin-bottom:7px}
+.register-cta-text p{color:var(--gray-600);font-size:0.88rem;max-width:420px;line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:13px 26px;border-radius:11px;font-weight:800;font-size:0.92rem;text-decoration:none;box-shadow:0 6px 20px rgba(22,163,74,0.3);transition:all .2s;white-space:nowrap}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-1px)}
 
-    /* ─── CHECKOUT PAGE ─── */
-    .checkout-page{min-height:100vh;background:#f9fafb;display:flex;flex-direction:column}
-    .checkout-nav{
-      background:#fff;border-bottom:1px solid var(--gray-200);
-      padding:0 5%;height:64px;display:flex;align-items:center;
-      justify-content:space-between;
-      box-shadow:0 2px 10px rgba(0,0,0,0.05);
-    }
-    .back-btn{
-      display:flex;align-items:center;gap:7px;
-      color:var(--gray-600);font-size:0.87rem;font-weight:600;
-      cursor:pointer;border:none;background:none;font-family:inherit;
-      transition:color .2s;padding:0;
-    }
-    .back-btn:hover{color:var(--green)}
-    .checkout-body{
-      flex:1;display:flex;flex-wrap:wrap;
-      max-width:900px;margin:40px auto;padding:0 5%;gap:28px;width:100%;
-    }
-    .checkout-main{flex:1;min-width:280px}
-    .checkout-summary{width:300px;flex-shrink:0}
-    @media(max-width:680px){.checkout-summary{width:100%}}
-    .checkout-card{
-      background:#fff;border-radius:16px;padding:28px;
-      box-shadow:0 2px 20px rgba(0,0,0,0.07);margin-bottom:20px;
-    }
-    .checkout-card h3{font-size:0.97rem;font-weight:800;margin-bottom:20px;color:var(--gray-900)}
-    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:480px){.field-row{grid-template-columns:1fr}}
-    .checkout-field{margin-bottom:14px}
-    .checkout-field label{display:block;font-size:0.73rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px}
-    .checkout-field input,.checkout-field select{
-      width:100%;border:2px solid var(--gray-200);border-radius:9px;
-      padding:10px 12px;font-size:0.88rem;font-family:inherit;
-      outline:none;transition:border .2s;color:var(--gray-900);background:#fff;
-    }
-    .checkout-field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:18px;padding-right:34px}
-    .checkout-field input:focus,.checkout-field select:focus{border-color:var(--green)}
-    .summary-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray-100);font-size:0.87rem}
-    .summary-row:last-of-type{border-bottom:none}
-    .summary-label{color:var(--gray-600)}
-    .summary-value{font-weight:700;color:var(--gray-900)}
-    .summary-total{font-size:1rem;font-weight:800;color:var(--green)}
-    .summary-country-badge{
-      display:flex;align-items:center;gap:8px;
-      background:var(--green-pale);border:1.5px solid var(--green-mid);
-      border-radius:9px;padding:10px 13px;margin-bottom:16px;font-size:0.85rem;font-weight:700;color:var(--green-dark);
-    }
-    .payment-method-list{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
-    .pm-item{
-      display:flex;align-items:center;justify-content:space-between;
-      border:2px solid var(--gray-200);border-radius:10px;
-      padding:11px 14px;cursor:pointer;transition:all .2s;background:#fff;
-    }
-    .pm-item:hover,.pm-item.selected{border-color:var(--green);background:var(--green-pale)}
-    .pm-left{display:flex;align-items:center;gap:10px}
-    .pm-icon{font-size:1.2rem;width:24px;text-align:center}
-    .pm-name{font-size:0.87rem;font-weight:700;color:var(--gray-900)}
-    .pm-sub{font-size:0.71rem;color:var(--gray-400);margin-top:1px}
-    .pm-check{color:var(--green);opacity:0;transition:opacity .2s}
-    .pm-item.selected .pm-check{opacity:1}
-    .submit-btn{
-      width:100%;background:var(--green);color:#fff;
-      border:none;border-radius:11px;padding:15px;
-      font-size:1rem;font-weight:800;cursor:pointer;
-      font-family:inherit;display:flex;align-items:center;justify-content:center;gap:9px;
-      transition:all .2s;box-shadow:0 5px 18px rgba(22,163,74,0.3);
-    }
-    .submit-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
-    .secure-note{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--gray-400);font-size:0.72rem;margin-top:10px}
-    .progress-bar{
-      display:flex;align-items:center;gap:8px;font-size:0.76rem;font-weight:600;color:var(--gray-400);
-    }
-    .progress-step{display:flex;align-items:center;gap:5px}
-    .progress-step.done{color:var(--green)}
-    .progress-step.active{color:var(--gray-900)}
-    .progress-dot{
-      width:22px;height:22px;border-radius:50%;background:var(--gray-200);
-      display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:800;color:var(--gray-400);
-    }
-    .progress-step.done .progress-dot{background:var(--green);color:#fff}
-    .progress-step.active .progress-dot{background:var(--gray-900);color:#fff}
-    .progress-line{flex:1;height:2px;background:var(--gray-200);border-radius:2px}
-    .progress-line.done{background:var(--green)}
+/* FOOTER */
+footer{background:var(--gray-900);padding:32px 5%;color:var(--gray-400);font-size:0.8rem}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.footer-brand{display:flex;align-items:center;gap:8px;text-decoration:none}
+.footer-logo-icon{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px}
+.footer-brand-text{color:#fff;font-weight:700;font-size:0.92rem}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{color:var(--gray-400);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{margin-top:18px;border-top:1px solid #374151;padding-top:18px;text-align:center}
 
-    /* ─── SUCCESS PAGE ─── */
-    .success-page{min-height:100vh;background:#f9fafb;display:flex;align-items:center;justify-content:center;padding:40px 5%}
-    .success-card{
-      background:#fff;border-radius:20px;padding:48px 36px;
-      max-width:480px;width:100%;text-align:center;
-      box-shadow:0 8px 40px rgba(0,0,0,0.09);
-    }
-    .success-icon{
-      width:72px;height:72px;border-radius:50%;
-      background:var(--green-mid);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto 20px;font-size:2rem;color:var(--green);
-    }
-    .success-card h2{font-size:1.5rem;font-weight:800;margin-bottom:10px}
-    .success-card p{color:var(--gray-600);font-size:0.9rem;line-height:1.7;margin-bottom:28px}
-    .ref-box{
-      background:var(--gray-100);border-radius:10px;
-      padding:12px 18px;font-size:0.83rem;color:var(--gray-700);
-      font-weight:600;margin-bottom:24px;letter-spacing:0.04em;
-    }
-  </style>
+/* ═══ CHECKOUT ═══ */
+.checkout-page{min-height:100vh;background:#f9fafb;display:flex;flex-direction:column}
+.checkout-nav{background:#fff;border-bottom:1px solid var(--gray-200);padding:0 4%;height:60px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(0,0,0,0.05);flex-wrap:wrap;gap:8px}
+.back-btn{display:flex;align-items:center;gap:6px;color:var(--gray-600);font-size:0.85rem;font-weight:600;cursor:pointer;border:none;background:none;font-family:inherit;transition:color .2s;padding:0}
+.back-btn:hover{color:var(--green)}
+.checkout-body{flex:1;display:flex;flex-wrap:wrap;max-width:880px;margin:32px auto;padding:0 4%;gap:24px;width:100%}
+.checkout-main{flex:1;min-width:260px}
+.checkout-summary{width:280px;flex-shrink:0}
+@media(max-width:640px){.checkout-summary{width:100%}.checkout-body{margin:20px auto}}
+.checkout-card{background:#fff;border-radius:14px;padding:24px;box-shadow:0 2px 20px rgba(0,0,0,0.07);margin-bottom:18px}
+.checkout-card h3{font-size:0.93rem;font-weight:800;margin-bottom:18px;color:var(--gray-900)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:440px){.field-row{grid-template-columns:1fr}}
+.checkout-field{margin-bottom:12px}
+.checkout-field label{display:block;font-size:0.7rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.checkout-field input,.checkout-field select{width:100%;border:2px solid var(--gray-200);border-radius:9px;padding:10px 12px;font-size:0.87rem;font-family:inherit;outline:none;transition:border .2s;color:var(--gray-900);background:#fff}
+.checkout-field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;background-size:18px;padding-right:34px}
+.checkout-field input:focus,.checkout-field select:focus{border-color:var(--green)}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--gray-100);font-size:0.85rem}
+.summary-row:last-of-type{border-bottom:none}
+.summary-label{color:var(--gray-600)}
+.summary-value{font-weight:700;color:var(--gray-900)}
+.summary-total{font-size:0.97rem;font-weight:800;color:var(--green)}
+.summary-country-badge{display:flex;align-items:center;gap:8px;background:var(--green-pale);border:1.5px solid var(--green-mid);border-radius:9px;padding:9px 12px;margin-bottom:14px;font-size:0.83rem;font-weight:700;color:var(--green-dark)}
+.pm-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.pm-item{display:flex;align-items:center;justify-content:space-between;border:2px solid var(--gray-200);border-radius:10px;padding:10px 13px;cursor:pointer;transition:all .2s;background:#fff}
+.pm-item:hover,.pm-item.selected{border-color:var(--green);background:var(--green-pale)}
+.pm-left{display:flex;align-items:center;gap:9px}
+.pm-icon{font-size:1.1rem;width:22px;text-align:center}
+.pm-name{font-size:0.85rem;font-weight:700;color:var(--gray-900)}
+.pm-sub{font-size:0.69rem;color:var(--gray-400);margin-top:1px}
+.pm-check{color:var(--green);opacity:0;transition:opacity .2s}
+.pm-item.selected .pm-check{opacity:1}
+.submit-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:11px;padding:14px;font-size:0.97rem;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 5px 18px rgba(22,163,74,0.3)}
+.submit-btn:hover{background:var(--green-dark);transform:translateY(-1px)}
+.secure-note{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--gray-400);font-size:0.7rem;margin-top:9px}
+.progress-bar{display:flex;align-items:center;gap:6px;font-size:0.73rem;font-weight:600;color:var(--gray-400)}
+.progress-step{display:flex;align-items:center;gap:4px}
+.progress-step.done{color:var(--green)}.progress-step.active{color:var(--gray-900)}
+.progress-dot{width:20px;height:20px;border-radius:50%;background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;color:var(--gray-400)}
+.progress-step.done .progress-dot{background:var(--green);color:#fff}
+.progress-step.active .progress-dot{background:var(--gray-900);color:#fff}
+.progress-line{flex:1;height:2px;background:var(--gray-200);border-radius:2px}
+.progress-line.done{background:var(--green)}
+
+/* ═══ SUCCESS ═══ */
+.success-page{min-height:100vh;background:#f9fafb;display:flex;align-items:center;justify-content:center;padding:32px 5%}
+.success-card{background:#fff;border-radius:18px;padding:40px 28px;max-width:440px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.09)}
+.success-icon{width:64px;height:64px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:1.8rem;color:var(--green)}
+.success-card h2{font-size:1.4rem;font-weight:800;margin-bottom:8px}
+.success-card p{color:var(--gray-600);font-size:0.88rem;line-height:1.7;margin-bottom:24px}
+.ref-box{background:var(--gray-100);border-radius:9px;padding:11px 16px;font-size:0.82rem;color:var(--gray-700);font-weight:600;margin-bottom:22px;letter-spacing:0.04em}
+
+/* ═══ REGISTER ═══ */
+.auth-page{min-height:100vh;background:#f9fafb;display:flex;flex-direction:column}
+.auth-body{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 5%}
+.auth-card{background:#fff;border-radius:18px;padding:36px 28px;max-width:420px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.09)}
+.auth-card h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+.auth-card p{color:var(--gray-600);font-size:0.85rem;margin-bottom:24px}
+.auth-card .field{margin-bottom:12px}
+
+/* ═══ ADMIN LOGIN ═══ */
+.admin-login-page{min-height:100vh;background:linear-gradient(135deg,#031a0d,#052e16,#14532d);display:flex;align-items:center;justify-content:center;padding:32px 5%}
+.admin-login-card{background:#fff;border-radius:18px;padding:40px 32px;max-width:400px;width:100%;box-shadow:0 16px 60px rgba(0,0,0,0.3)}
+.admin-login-card .logo-wrap{text-align:center;margin-bottom:28px}
+.admin-login-card .admin-icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.4rem;color:#fff}
+.admin-login-card h2{font-size:1.2rem;font-weight:800;margin-bottom:4px;text-align:center}
+.admin-login-card p{color:var(--gray-600);font-size:0.83rem;text-align:center;margin-bottom:28px}
+.admin-field{margin-bottom:14px}
+.admin-field label{display:block;font-size:0.7rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px}
+.admin-field input{width:100%;border:2px solid var(--gray-200);border-radius:9px;padding:11px 13px;font-size:0.9rem;font-family:inherit;outline:none;transition:border .2s}
+.admin-field input:focus{border-color:var(--green)}
+.admin-login-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:10px;padding:13px;font-size:0.97rem;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:4px}
+.admin-login-btn:hover{background:var(--green-dark)}
+.admin-err{color:#dc2626;font-size:0.8rem;text-align:center;margin-top:10px;display:none}
+
+/* ═══ ADMIN PANEL ═══ */
+.admin-page{display:none;min-height:100vh;background:#f1f5f9}
+.admin-page.active{display:flex;flex-direction:column}
+.admin-topbar{background:var(--gray-900);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;position:sticky;top:0;z-index:200}
+.admin-topbar-left{display:flex;align-items:center;gap:10px}
+.admin-topbar-title{color:#fff;font-weight:800;font-size:0.97rem}
+.admin-topbar-badge{background:var(--green);color:#fff;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:0.05em}
+.admin-logout{color:var(--gray-400);font-size:0.82rem;font-weight:600;cursor:pointer;border:none;background:none;font-family:inherit;transition:color .2s;display:flex;align-items:center;gap:6px}
+.admin-logout:hover{color:#fff}
+.admin-body{display:flex;flex:1;overflow:hidden}
+.admin-sidebar{width:220px;background:#fff;border-right:1px solid var(--gray-200);display:flex;flex-direction:column;padding:20px 0;flex-shrink:0}
+.admin-nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;cursor:pointer;color:var(--gray-600);font-size:0.86rem;font-weight:600;transition:all .2s;border-left:3px solid transparent}
+.admin-nav-item:hover{background:var(--gray-100);color:var(--gray-900)}
+.admin-nav-item.active{background:var(--green-pale);color:var(--green-dark);border-left-color:var(--green)}
+.admin-nav-item i{width:18px;text-align:center;font-size:0.95rem}
+.admin-content{flex:1;overflow-y:auto;padding:24px}
+.admin-section{display:none}.admin-section.active{display:block}
+.admin-section h2{font-size:1.1rem;font-weight:800;margin-bottom:20px;color:var(--gray-900)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+.admin-stat-card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.admin-stat-card .stat-val{font-size:1.8rem;font-weight:800;color:var(--green)}
+.admin-stat-card .stat-lbl{color:var(--gray-600);font-size:0.78rem;margin-top:3px}
+.admin-stat-card .stat-change{font-size:0.73rem;margin-top:4px;color:#16a34a;font-weight:600}
+.admin-table-wrap{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06);overflow:hidden}
+.admin-table-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--gray-200)}
+.admin-table-header h3{font-size:0.9rem;font-weight:800}
+.admin-table-search{border:1.5px solid var(--gray-200);border-radius:8px;padding:7px 12px;font-size:0.82rem;font-family:inherit;outline:none;transition:border .2s;width:200px}
+.admin-table-search:focus{border-color:var(--green)}
+table{width:100%;border-collapse:collapse}
+th{padding:11px 16px;text-align:left;font-size:0.72rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.04em;background:var(--gray-100);border-bottom:1px solid var(--gray-200)}
+td{padding:12px 16px;font-size:0.84rem;border-bottom:1px solid var(--gray-100);color:var(--gray-700)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafafa}
+.status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:0.71rem;font-weight:700}
+.status-completed{background:#dcfce7;color:#15803d}
+.status-pending{background:#fef9c3;color:#854d0e}
+.status-failed{background:#fee2e2;color:#b91c1c}
+.status-processing{background:#dbeafe;color:#1d4ed8}
+.admin-btn{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
+.admin-btn:hover{background:var(--green-dark)}
+.admin-btn-secondary{background:var(--gray-100);color:var(--gray-700);border:1.5px solid var(--gray-200)}
+.admin-btn-secondary:hover{background:var(--gray-200);border-color:var(--gray-300)}
+.admin-btn-danger{background:#fee2e2;color:#b91c1c;border:1.5px solid #fecaca}
+.admin-btn-danger:hover{background:#fecaca}
+.settings-card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:16px}
+.settings-card h3{font-size:0.9rem;font-weight:800;margin-bottom:16px;color:var(--gray-900);padding-bottom:10px;border-bottom:1px solid var(--gray-100)}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-100)}
+.settings-row:last-child{border-bottom:none}
+.settings-label{font-size:0.85rem;font-weight:600;color:var(--gray-700)}
+.settings-desc{font-size:0.75rem;color:var(--gray-400);margin-top:2px}
+.toggle-switch{position:relative;width:44px;height:24px;cursor:pointer}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:var(--gray-200);border-radius:24px;transition:.3s}
+.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+input:checked+.toggle-slider{background:var(--green)}
+input:checked+.toggle-slider::before{transform:translateX(20px)}
+.settings-input{border:1.5px solid var(--gray-200);border-radius:8px;padding:8px 12px;font-size:0.85rem;font-family:inherit;outline:none;transition:border .2s;width:200px}
+.settings-input:focus{border-color:var(--green)}
+.rate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.rate-item{display:flex;align-items:center;justify-content:space-between;background:var(--gray-100);border-radius:9px;padding:10px 14px}
+.rate-country{font-size:0.84rem;font-weight:700;color:var(--gray-900)}
+.rate-input{border:1.5px solid var(--gray-200);border-radius:7px;padding:6px 10px;font-size:0.83rem;font-family:inherit;outline:none;width:90px;text-align:right;transition:border .2s}
+.rate-input:focus{border-color:var(--green)}
+@media(max-width:700px){
+  .admin-sidebar{display:none}
+  .admin-mobile-nav{display:flex;overflow-x:auto;background:#fff;border-bottom:1px solid var(--gray-200);padding:0 4%;gap:4px;-webkit-overflow-scrolling:touch}
+  .admin-mobile-nav-item{flex-shrink:0;padding:12px 14px;font-size:0.8rem;font-weight:600;color:var(--gray-600);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  .admin-mobile-nav-item.active{color:var(--green);border-bottom-color:var(--green)}
+}
+@media(min-width:701px){.admin-mobile-nav{display:none}}
+
+/* ═══ AI CHAT WIDGET ═══ */
+.ai-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-light));box-shadow:0 6px 24px rgba(22,163,74,0.45);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;border:none;transition:all .25s}
+.ai-fab:hover{transform:scale(1.08);box-shadow:0 8px 32px rgba(22,163,74,0.55)}
+.ai-fab i{color:#fff;font-size:1.3rem}
+.ai-chat-window{position:fixed;bottom:90px;right:24px;width:340px;max-height:500px;background:#fff;border-radius:18px;box-shadow:0 12px 48px rgba(0,0,0,0.2);z-index:500;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--gray-200)}
+.ai-chat-window.open{display:flex}
+.ai-chat-header{background:linear-gradient(135deg,var(--green),var(--green-light));padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.ai-chat-header-left{display:flex;align-items:center;gap:9px}
+.ai-chat-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ai-chat-name{color:#fff;font-weight:800;font-size:0.9rem}
+.ai-chat-status{color:rgba(255,255,255,0.8);font-size:0.71rem;margin-top:1px;display:flex;align-items:center;gap:4px}
+.ai-status-dot{width:6px;height:6px;border-radius:50%;background:#86efac}
+.ai-close-btn{color:rgba(255,255,255,0.8);background:none;border:none;cursor:pointer;font-size:1rem;padding:4px;transition:color .2s}
+.ai-close-btn:hover{color:#fff}
+.ai-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:340px}
+.ai-msg{max-width:80%;padding:10px 13px;border-radius:12px;font-size:0.84rem;line-height:1.55}
+.ai-msg.bot{background:var(--gray-100);color:var(--gray-900);align-self:flex-start;border-bottom-left-radius:4px}
+.ai-msg.user{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg.typing{background:var(--gray-100);align-self:flex-start;padding:10px 16px}
+.typing-dots{display:flex;gap:4px;align-items:center}
+.typing-dots span{width:7px;height:7px;border-radius:50%;background:var(--gray-400);animation:typingBounce 1.2s infinite ease-in-out}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-6px)}}
+.ai-input-row{padding:12px;border-top:1px solid var(--gray-200);display:flex;gap:8px}
+.ai-input{flex:1;border:1.5px solid var(--gray-200);border-radius:22px;padding:9px 14px;font-size:0.84rem;font-family:inherit;outline:none;transition:border .2s}
+.ai-input:focus{border-color:var(--green)}
+.ai-send-btn{width:36px;height:36px;border-radius:50%;background:var(--green);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.ai-send-btn:hover{background:var(--green-dark)}
+.ai-send-btn i{color:#fff;font-size:0.82rem}
+@media(max-width:400px){.ai-chat-window{width:calc(100vw - 32px);right:16px;bottom:80px}}
+</style>
 </head>
 <body>
 
-<!-- ══════════════════════════════ PAGE: HOME ══════════════════════════════ -->
+<!-- ════════════ PAGE: HOME ════════════ -->
 <div id="page-home" class="page active">
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="logo" onclick="showPage('page-home');return false">
       <div class="logo-icon">A</div>
@@ -416,10 +367,21 @@
       <li><a href="#p2p">P2P</a></li>
     </ul>
     <div class="nav-right">
-      <a href="#" class="nav-login">Sign In</a>
+      <a href="#" class="nav-login" onclick="showPage('page-register');return false">Sign In</a>
       <a href="#" class="nav-cta" onclick="showPage('page-register');return false">Get Started</a>
+      <button class="hamburger" onclick="toggleMenu()" id="hamburger-btn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#how" onclick="closeMenu()">How It Works</a>
+    <a href="#countries" onclick="closeMenu()">Countries</a>
+    <a href="#trust" onclick="closeMenu()">Why Us</a>
+    <a href="#p2p" onclick="closeMenu()">P2P</a>
+    <a href="#" onclick="showPage('page-register');closeMenu();return false">Sign In / Register</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -430,80 +392,70 @@
         <span class="accent">Instantly & Securely</span>
         <span class="sub">to 40+ Countries Worldwide</span>
       </h1>
-      <p class="hero-desc">No hidden fees. Real exchange rates. Send money to family, pay suppliers, or fund any account — fast, safe, and with full support.</p>
-      <a href="#" class="btn-hero" onclick="scrollToCountries();return false">
-        <i class="fas fa-paper-plane"></i> Send Money Now
-      </a>
+      <p class="hero-desc">No hidden fees. Real exchange rates. Send to family, pay suppliers, or fund any account — fast, safe, and fully supported.</p>
+      <a href="#countries" class="btn-hero"><i class="fas fa-paper-plane"></i> Send Money Now</a>
       <div class="hero-perks">
-        <span class="perk"><i class="fas fa-check-circle"></i> No Registration to Send</span>
+        <span class="perk"><i class="fas fa-check-circle"></i> No Registration Needed</span>
         <span class="perk"><i class="fas fa-check-circle"></i> Bank-level Security</span>
         <span class="perk"><i class="fas fa-check-circle"></i> 24/7 Support</span>
       </div>
     </div>
-
     <div class="hero-right">
       <div class="hero-card">
         <div class="card-header">
           <h3>Quick Send</h3>
           <span class="secure-badge"><i class="fas fa-lock"></i> Secure</span>
         </div>
-
-        <div class="field-label">Select Country</div>
+        <div class="field-label">Destination Country</div>
         <select class="field" id="hero-country" onchange="updateHeroMethods()">
-          <option value="">— Choose destination —</option>
-          <option value="NG" data-flag="🇳🇬" data-currency="NGN">Nigeria (NGN)</option>
-          <option value="GH" data-flag="🇬🇭" data-currency="GHS">Ghana (GHS)</option>
-          <option value="KE" data-flag="🇰🇪" data-currency="KES">Kenya (KES)</option>
-          <option value="ZA" data-flag="🇿🇦" data-currency="ZAR">South Africa (ZAR)</option>
-          <option value="UG" data-flag="🇺🇬" data-currency="UGX">Uganda (UGX)</option>
-          <option value="TZ" data-flag="🇹🇿" data-currency="TZS">Tanzania (TZS)</option>
-          <option value="RW" data-flag="🇷🇼" data-currency="RWF">Rwanda (RWF)</option>
-          <option value="SN" data-flag="🇸🇳" data-currency="XOF">Senegal (XOF)</option>
-          <option value="CI" data-flag="🇨🇮" data-currency="XOF">Côte d'Ivoire (XOF)</option>
-          <option value="CM" data-flag="🇨🇲" data-currency="XAF">Cameroon (XAF)</option>
-          <option value="ET" data-flag="🇪🇹" data-currency="ETB">Ethiopia (ETB)</option>
-          <option value="EG" data-flag="🇪🇬" data-currency="EGP">Egypt (EGP)</option>
-          <option value="MA" data-flag="🇲🇦" data-currency="MAD">Morocco (MAD)</option>
-          <option value="BD" data-flag="🇧🇩" data-currency="BDT">Bangladesh (BDT)</option>
-          <option value="PK" data-flag="🇵🇰" data-currency="PKR">Pakistan (PKR)</option>
-          <option value="IN" data-flag="🇮🇳" data-currency="INR">India (INR)</option>
-          <option value="PH" data-flag="🇵🇭" data-currency="PHP">Philippines (PHP)</option>
-          <option value="ID" data-flag="🇮🇩" data-currency="IDR">Indonesia (IDR)</option>
-          <option value="VN" data-flag="🇻🇳" data-currency="VND">Vietnam (VND)</option>
-          <option value="MX" data-flag="🇲🇽" data-currency="MXN">Mexico (MXN)</option>
-          <option value="CO" data-flag="🇨🇴" data-currency="COP">Colombia (COP)</option>
-          <option value="BR" data-flag="🇧🇷" data-currency="BRL">Brazil (BRL)</option>
-          <option value="PE" data-flag="🇵🇪" data-currency="PEN">Peru (PEN)</option>
-          <option value="TH" data-flag="🇹🇭" data-currency="THB">Thailand (THB)</option>
-          <option value="TR" data-flag="🇹🇷" data-currency="TRY">Turkey (TRY)</option>
-          <option value="UA" data-flag="🇺🇦" data-currency="UAH">Ukraine (UAH)</option>
-          <option value="PL" data-flag="🇵🇱" data-currency="PLN">Poland (PLN)</option>
-          <option value="NG-BTC" data-flag="₿" data-currency="BTC">Crypto (BTC/USDT)</option>
+          <option value="">— Select country —</option>
+          <option value="NG">🇳🇬 Nigeria (NGN)</option>
+          <option value="GH">🇬🇭 Ghana (GHS)</option>
+          <option value="KE">🇰🇪 Kenya (KES)</option>
+          <option value="ZA">🇿🇦 South Africa (ZAR)</option>
+          <option value="UG">🇺🇬 Uganda (UGX)</option>
+          <option value="TZ">🇹🇿 Tanzania (TZS)</option>
+          <option value="RW">🇷🇼 Rwanda (RWF)</option>
+          <option value="SN">🇸🇳 Senegal (XOF)</option>
+          <option value="CI">🇨🇮 Côte d'Ivoire (XOF)</option>
+          <option value="CM">🇨🇲 Cameroon (XAF)</option>
+          <option value="ET">🇪🇹 Ethiopia (ETB)</option>
+          <option value="EG">🇪🇬 Egypt (EGP)</option>
+          <option value="MA">🇲🇦 Morocco (MAD)</option>
+          <option value="BD">🇧🇩 Bangladesh (BDT)</option>
+          <option value="PK">🇵🇰 Pakistan (PKR)</option>
+          <option value="IN">🇮🇳 India (INR)</option>
+          <option value="PH">🇵🇭 Philippines (PHP)</option>
+          <option value="ID">🇮🇩 Indonesia (IDR)</option>
+          <option value="VN">🇻🇳 Vietnam (VND)</option>
+          <option value="MX">🇲🇽 Mexico (MXN)</option>
+          <option value="CO">🇨🇴 Colombia (COP)</option>
+          <option value="BR">🇧🇷 Brazil (BRL)</option>
+          <option value="PE">🇵🇪 Peru (PEN)</option>
+          <option value="TH">🇹🇭 Thailand (THB)</option>
+          <option value="TR">🇹🇷 Turkey (TRY)</option>
+          <option value="UA">🇺🇦 Ukraine (UAH)</option>
+          <option value="PL">🇵🇱 Poland (PLN)</option>
+          <option value="BTC">₿ Crypto (BTC/USDT)</option>
         </select>
-
         <div class="field-label">Amount (USD)</div>
         <div class="amount-grid">
-          <button class="amount-btn" onclick="setAmount(50,this)">$50</button>
-          <button class="amount-btn" onclick="setAmount(100,this)">$100</button>
-          <button class="amount-btn" onclick="setAmount(250,this)">$250</button>
-          <button class="amount-btn" onclick="setAmount(500,this)">$500</button>
+          <button class="amount-btn" onclick="setAmt(50,this)">$50</button>
+          <button class="amount-btn" onclick="setAmt(100,this)">$100</button>
+          <button class="amount-btn" onclick="setAmt(250,this)">$250</button>
+          <button class="amount-btn" onclick="setAmt(500,this)">$500</button>
         </div>
-        <input class="field" type="number" id="hero-amount" placeholder="Or enter custom amount" min="10"/>
-
+        <input class="field" type="number" id="hero-amount" placeholder="Or enter amount…" min="10"/>
         <div id="hero-methods-wrap" style="display:none">
-          <div class="field-label" style="margin-top:4px">Payment Method</div>
-          <div class="payment-method-list" id="hero-methods"></div>
+          <div class="field-label" style="margin-top:2px">Payment Method</div>
+          <div class="method-list" id="hero-methods"></div>
         </div>
-
-        <div id="hero-no-country" style="text-align:center;padding:10px 0 14px;color:var(--gray-400);font-size:0.82rem">
-          <i class="fas fa-globe" style="display:block;font-size:1.5rem;color:var(--gray-200);margin-bottom:6px"></i>
-          Select a country to see available methods
+        <div id="hero-no-country" style="text-align:center;padding:8px 0 12px;color:var(--gray-400);font-size:0.8rem">
+          <i class="fas fa-globe" style="display:block;font-size:1.4rem;color:var(--gray-200);margin-bottom:5px"></i>
+          Select a country to see methods
         </div>
-
-        <button class="pay-btn" onclick="proceedToCheckout()">
-          <i class="fas fa-paper-plane"></i> Continue to Payment
-        </button>
-        <p class="card-note"><i class="fas fa-lock" style="font-size:0.65rem"></i> 256-bit SSL encrypted · No registration required</p>
+        <button class="pay-btn" onclick="proceedToCheckout()"><i class="fas fa-paper-plane"></i> Continue to Payment</button>
+        <p class="card-note"><i class="fas fa-lock" style="font-size:0.62rem"></i> 256-bit SSL · No account required</p>
       </div>
     </div>
   </section>
@@ -511,86 +463,88 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat"><div class="stat-num">$48M+</div><div class="stat-label">Total Sent</div></div>
-    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Countries Served</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Countries</div></div>
     <div class="stat"><div class="stat-num">120K+</div><div class="stat-label">Transactions</div></div>
-    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Rating</div></div>
   </div>
 
-  <!-- FAMILY SECTION -->
-  <section class="family-section">
-    <div class="family-img">
-      <img src="https://media.base44.com/images/public/6a0c7d676fee8af5174c66b8/00cfc2d5e_generated_image.png" alt="Happy family supported by ARR Trading Hub"/>
-    </div>
-    <div class="family-text">
-      <div class="tag">For Everyone</div>
-      <h2>Send Money to the People Who Matter Most</h2>
-      <p>Whether you're supporting family back home, paying a business partner abroad, or sending funds to a loved one — ARR Trading Hub makes it fast, safe, and affordable.</p>
-      <div class="family-points">
-        <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>No account needed</strong> — anyone can receive. Senders can send with or without registration.</span></div>
-        <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>Real exchange rates</strong> — no inflated spreads. You see exactly what they receive.</span></div>
-        <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>Register for more perks</strong> — track transfers, earn rewards, and get priority support.</span></div>
+  <!-- FAMILY -->
+  <section class="section">
+    <div class="family-wrap">
+      <div class="family-img">
+        <img src="https://media.base44.com/images/public/6a0c7d676fee8af5174c66b8/00cfc2d5e_generated_image.png" alt="Happy family supported by ARR Trading Hub"/>
+      </div>
+      <div class="family-text">
+        <span class="tag">For Everyone</span>
+        <h2>Send to the People Who Matter Most</h2>
+        <p>Whether supporting family back home, paying a business partner, or funding a loved one abroad — ARR Trading Hub makes it fast, safe, and affordable.</p>
+        <div class="family-points">
+          <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>No account needed</strong> — send instantly, no signup required.</span></div>
+          <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>Real exchange rates</strong> — no inflated spreads or hidden fees.</span></div>
+          <div class="family-point"><i class="fas fa-check-circle"></i><span><strong>Register for perks</strong> — track transfers, earn rewards, priority support.</span></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="how" id="how">
+  <section class="section section-alt" id="how">
     <div class="section-hdr">
       <span class="tag">Simple Process</span>
       <h2>Send in 3 Easy Steps</h2>
       <p>No complicated forms. No hidden charges. Just fast, reliable transfers.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-icon">🌍</div><h4>Choose Country</h4><p>Select the destination country and enter the amount you want to send in USD.</p></div>
-      <div class="step"><div class="step-num">2</div><div class="step-icon">📋</div><h4>Fill Details</h4><p>Enter recipient's name and bank/mobile wallet details. Fast, guided form.</p></div>
-      <div class="step"><div class="step-num">3</div><div class="step-icon">✅</div><h4>Confirm & Send</h4><p>Review the summary, pay securely, and your transfer is on its way instantly.</p></div>
+      <div class="step"><div class="step-num">1</div><div class="step-icon">🌍</div><h4>Choose Country</h4><p>Pick your destination and enter the USD amount to send.</p></div>
+      <div class="step"><div class="step-num">2</div><div class="step-icon">📋</div><h4>Fill Details</h4><p>Enter the recipient's bank or mobile wallet info.</p></div>
+      <div class="step"><div class="step-num">3</div><div class="step-icon">✅</div><h4>Confirm & Send</h4><p>Review, pay securely — transfer is on its way.</p></div>
     </div>
   </section>
 
-  <!-- COUNTRIES GRID -->
-  <section class="countries-section" id="countries">
+  <!-- COUNTRIES -->
+  <section class="section" id="countries">
     <div class="section-hdr">
       <span class="tag">40+ Destinations</span>
       <h2>Where We Send To</h2>
-      <p>Click any country to start a transfer there right away.</p>
+      <p>Tap any country to start a transfer there instantly.</p>
     </div>
     <div class="countries-grid">
-      <div class="country-card" onclick="quickSelectCountry('NG')"><div class="country-flag">🇳🇬</div><div class="country-name">Nigeria</div><div class="country-currency">NGN</div></div>
-      <div class="country-card" onclick="quickSelectCountry('GH')"><div class="country-flag">🇬🇭</div><div class="country-name">Ghana</div><div class="country-currency">GHS</div></div>
-      <div class="country-card" onclick="quickSelectCountry('KE')"><div class="country-flag">🇰🇪</div><div class="country-name">Kenya</div><div class="country-currency">KES</div></div>
-      <div class="country-card" onclick="quickSelectCountry('ZA')"><div class="country-flag">🇿🇦</div><div class="country-name">South Africa</div><div class="country-currency">ZAR</div></div>
-      <div class="country-card" onclick="quickSelectCountry('UG')"><div class="country-flag">🇺🇬</div><div class="country-name">Uganda</div><div class="country-currency">UGX</div></div>
-      <div class="country-card" onclick="quickSelectCountry('TZ')"><div class="country-flag">🇹🇿</div><div class="country-name">Tanzania</div><div class="country-currency">TZS</div></div>
-      <div class="country-card" onclick="quickSelectCountry('RW')"><div class="country-flag">🇷🇼</div><div class="country-name">Rwanda</div><div class="country-currency">RWF</div></div>
-      <div class="country-card" onclick="quickSelectCountry('SN')"><div class="country-flag">🇸🇳</div><div class="country-name">Senegal</div><div class="country-currency">XOF</div></div>
-      <div class="country-card" onclick="quickSelectCountry('CI')"><div class="country-flag">🇨🇮</div><div class="country-name">Côte d'Ivoire</div><div class="country-currency">XOF</div></div>
-      <div class="country-card" onclick="quickSelectCountry('CM')"><div class="country-flag">🇨🇲</div><div class="country-name">Cameroon</div><div class="country-currency">XAF</div></div>
-      <div class="country-card" onclick="quickSelectCountry('ET')"><div class="country-flag">🇪🇹</div><div class="country-name">Ethiopia</div><div class="country-currency">ETB</div></div>
-      <div class="country-card" onclick="quickSelectCountry('EG')"><div class="country-flag">🇪🇬</div><div class="country-name">Egypt</div><div class="country-currency">EGP</div></div>
-      <div class="country-card" onclick="quickSelectCountry('MA')"><div class="country-flag">🇲🇦</div><div class="country-name">Morocco</div><div class="country-currency">MAD</div></div>
-      <div class="country-card" onclick="quickSelectCountry('BD')"><div class="country-flag">🇧🇩</div><div class="country-name">Bangladesh</div><div class="country-currency">BDT</div></div>
-      <div class="country-card" onclick="quickSelectCountry('PK')"><div class="country-flag">🇵🇰</div><div class="country-name">Pakistan</div><div class="country-currency">PKR</div></div>
-      <div class="country-card" onclick="quickSelectCountry('IN')"><div class="country-flag">🇮🇳</div><div class="country-name">India</div><div class="country-currency">INR</div></div>
-      <div class="country-card" onclick="quickSelectCountry('PH')"><div class="country-flag">🇵🇭</div><div class="country-name">Philippines</div><div class="country-currency">PHP</div></div>
-      <div class="country-card" onclick="quickSelectCountry('ID')"><div class="country-flag">🇮🇩</div><div class="country-name">Indonesia</div><div class="country-currency">IDR</div></div>
-      <div class="country-card" onclick="quickSelectCountry('VN')"><div class="country-flag">🇻🇳</div><div class="country-name">Vietnam</div><div class="country-currency">VND</div></div>
-      <div class="country-card" onclick="quickSelectCountry('MX')"><div class="country-flag">🇲🇽</div><div class="country-name">Mexico</div><div class="country-currency">MXN</div></div>
-      <div class="country-card" onclick="quickSelectCountry('CO')"><div class="country-flag">🇨🇴</div><div class="country-name">Colombia</div><div class="country-currency">COP</div></div>
-      <div class="country-card" onclick="quickSelectCountry('BR')"><div class="country-flag">🇧🇷</div><div class="country-name">Brazil</div><div class="country-currency">BRL</div></div>
-      <div class="country-card" onclick="quickSelectCountry('PE')"><div class="country-flag">🇵🇪</div><div class="country-name">Peru</div><div class="country-currency">PEN</div></div>
-      <div class="country-card" onclick="quickSelectCountry('TH')"><div class="country-flag">🇹🇭</div><div class="country-name">Thailand</div><div class="country-currency">THB</div></div>
-      <div class="country-card" onclick="quickSelectCountry('TR')"><div class="country-flag">🇹🇷</div><div class="country-name">Turkey</div><div class="country-currency">TRY</div></div>
-      <div class="country-card" onclick="quickSelectCountry('UA')"><div class="country-flag">🇺🇦</div><div class="country-name">Ukraine</div><div class="country-currency">UAH</div></div>
-      <div class="country-card" onclick="quickSelectCountry('PL')"><div class="country-flag">🇵🇱</div><div class="country-name">Poland</div><div class="country-currency">PLN</div></div>
-      <div class="country-card" onclick="quickSelectCountry('NG-BTC')"><div class="country-flag">₿</div><div class="country-name">Crypto</div><div class="country-currency">BTC / USDT</div></div>
+      <div class="country-card" onclick="quickSelect('NG')"><div class="country-flag">🇳🇬</div><div class="country-name">Nigeria</div><div class="country-currency">NGN</div></div>
+      <div class="country-card" onclick="quickSelect('GH')"><div class="country-flag">🇬🇭</div><div class="country-name">Ghana</div><div class="country-currency">GHS</div></div>
+      <div class="country-card" onclick="quickSelect('KE')"><div class="country-flag">🇰🇪</div><div class="country-name">Kenya</div><div class="country-currency">KES</div></div>
+      <div class="country-card" onclick="quickSelect('ZA')"><div class="country-flag">🇿🇦</div><div class="country-name">South Africa</div><div class="country-currency">ZAR</div></div>
+      <div class="country-card" onclick="quickSelect('UG')"><div class="country-flag">🇺🇬</div><div class="country-name">Uganda</div><div class="country-currency">UGX</div></div>
+      <div class="country-card" onclick="quickSelect('TZ')"><div class="country-flag">🇹🇿</div><div class="country-name">Tanzania</div><div class="country-currency">TZS</div></div>
+      <div class="country-card" onclick="quickSelect('RW')"><div class="country-flag">🇷🇼</div><div class="country-name">Rwanda</div><div class="country-currency">RWF</div></div>
+      <div class="country-card" onclick="quickSelect('SN')"><div class="country-flag">🇸🇳</div><div class="country-name">Senegal</div><div class="country-currency">XOF</div></div>
+      <div class="country-card" onclick="quickSelect('CI')"><div class="country-flag">🇨🇮</div><div class="country-name">Côte d'Ivoire</div><div class="country-currency">XOF</div></div>
+      <div class="country-card" onclick="quickSelect('CM')"><div class="country-flag">🇨🇲</div><div class="country-name">Cameroon</div><div class="country-currency">XAF</div></div>
+      <div class="country-card" onclick="quickSelect('ET')"><div class="country-flag">🇪🇹</div><div class="country-name">Ethiopia</div><div class="country-currency">ETB</div></div>
+      <div class="country-card" onclick="quickSelect('EG')"><div class="country-flag">🇪🇬</div><div class="country-name">Egypt</div><div class="country-currency">EGP</div></div>
+      <div class="country-card" onclick="quickSelect('MA')"><div class="country-flag">🇲🇦</div><div class="country-name">Morocco</div><div class="country-currency">MAD</div></div>
+      <div class="country-card" onclick="quickSelect('BD')"><div class="country-flag">🇧🇩</div><div class="country-name">Bangladesh</div><div class="country-currency">BDT</div></div>
+      <div class="country-card" onclick="quickSelect('PK')"><div class="country-flag">🇵🇰</div><div class="country-name">Pakistan</div><div class="country-currency">PKR</div></div>
+      <div class="country-card" onclick="quickSelect('IN')"><div class="country-flag">🇮🇳</div><div class="country-name">India</div><div class="country-currency">INR</div></div>
+      <div class="country-card" onclick="quickSelect('PH')"><div class="country-flag">🇵🇭</div><div class="country-name">Philippines</div><div class="country-currency">PHP</div></div>
+      <div class="country-card" onclick="quickSelect('ID')"><div class="country-flag">🇮🇩</div><div class="country-name">Indonesia</div><div class="country-currency">IDR</div></div>
+      <div class="country-card" onclick="quickSelect('VN')"><div class="country-flag">🇻🇳</div><div class="country-name">Vietnam</div><div class="country-currency">VND</div></div>
+      <div class="country-card" onclick="quickSelect('MX')"><div class="country-flag">🇲🇽</div><div class="country-name">Mexico</div><div class="country-currency">MXN</div></div>
+      <div class="country-card" onclick="quickSelect('CO')"><div class="country-flag">🇨🇴</div><div class="country-name">Colombia</div><div class="country-currency">COP</div></div>
+      <div class="country-card" onclick="quickSelect('BR')"><div class="country-flag">🇧🇷</div><div class="country-name">Brazil</div><div class="country-currency">BRL</div></div>
+      <div class="country-card" onclick="quickSelect('PE')"><div class="country-flag">🇵🇪</div><div class="country-name">Peru</div><div class="country-currency">PEN</div></div>
+      <div class="country-card" onclick="quickSelect('TH')"><div class="country-flag">🇹🇭</div><div class="country-name">Thailand</div><div class="country-currency">THB</div></div>
+      <div class="country-card" onclick="quickSelect('TR')"><div class="country-flag">🇹🇷</div><div class="country-name">Turkey</div><div class="country-currency">TRY</div></div>
+      <div class="country-card" onclick="quickSelect('UA')"><div class="country-flag">🇺🇦</div><div class="country-name">Ukraine</div><div class="country-currency">UAH</div></div>
+      <div class="country-card" onclick="quickSelect('PL')"><div class="country-flag">🇵🇱</div><div class="country-name">Poland</div><div class="country-currency">PLN</div></div>
+      <div class="country-card" onclick="quickSelect('BTC')"><div class="country-flag">₿</div><div class="country-name">Crypto</div><div class="country-currency">BTC / USDT</div></div>
     </div>
   </section>
 
-  <!-- P2P SECTION -->
+  <!-- P2P -->
   <section class="p2p-section" id="p2p">
     <div class="p2p-badge"><i class="fas fa-clock"></i> Coming Soon</div>
     <h2>P2P Trading — Coming Soon</h2>
-    <p>Trade directly with verified peers. No middlemen, better rates, and full control. Our Peer-to-Peer marketplace is launching shortly — join the waitlist to get early access.</p>
+    <p>Trade directly with verified peers. No middlemen, better rates, full control. Our marketplace is launching shortly.</p>
     <div class="p2p-features">
       <div class="p2p-feat"><i class="fas fa-handshake"></i> Direct Peer Trades</div>
       <div class="p2p-feat"><i class="fas fa-shield-halved"></i> Escrow Protected</div>
@@ -601,17 +555,17 @@
   </section>
 
   <!-- TRUST -->
-  <section class="trust" id="trust">
+  <section class="section section-alt" id="trust">
     <div class="section-hdr">
       <span class="tag">Why ARR Trading Hub</span>
       <h2>Built on Trust & Transparency</h2>
-      <p>Every feature is designed to protect your money and give you peace of mind.</p>
+      <p>Every feature protects your money and gives you peace of mind.</p>
     </div>
     <div class="trust-grid">
-      <div class="trust-card"><i class="fas fa-lock"></i><h4>Bank-Grade Security</h4><p>All transactions are encrypted with 256-bit SSL. Your funds are fully protected from start to finish.</p></div>
-      <div class="trust-card"><i class="fas fa-eye"></i><h4>Full Transparency</h4><p>Real exchange rates, no hidden fees. What you see is exactly what your recipient gets.</p></div>
-      <div class="trust-card"><i class="fas fa-headset"></i><h4>24/7 Live Support</h4><p>Our team is available around the clock via chat and email. Help is always one message away.</p></div>
-      <div class="trust-card"><i class="fas fa-user-check"></i><h4>No Account Required</h4><p>Send without registering. Create an account to unlock transfer history, rewards, and faster repeat sends.</p></div>
+      <div class="trust-card"><i class="fas fa-lock"></i><h4>Bank-Grade Security</h4><p>256-bit SSL encryption on all transactions. Your funds are fully protected.</p></div>
+      <div class="trust-card"><i class="fas fa-eye"></i><h4>Full Transparency</h4><p>Real rates, zero hidden fees. What you see is exactly what they receive.</p></div>
+      <div class="trust-card"><i class="fas fa-headset"></i><h4>24/7 Support</h4><p>Our team is available around the clock. Help is one message away.</p></div>
+      <div class="trust-card"><i class="fas fa-user-check"></i><h4>No Account Required</h4><p>Send without signing up. Register to unlock history, rewards & more.</p></div>
     </div>
   </section>
 
@@ -619,14 +573,11 @@
   <section class="register-cta">
     <div class="register-cta-text">
       <h2>Register for More Perks</h2>
-      <p>Track your transfers, earn loyalty rewards, unlock faster checkouts, and get priority customer support — all free with a registered account.</p>
+      <p>Track transfers, earn loyalty rewards, faster checkouts, and priority support — all free.</p>
     </div>
-    <a href="#" class="btn-primary" onclick="showPage('page-register');return false">
-      <i class="fas fa-user-plus"></i> Create Free Account
-    </a>
+    <a href="#" class="btn-primary" onclick="showPage('page-register');return false"><i class="fas fa-user-plus"></i> Create Free Account</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <a href="#" class="footer-brand" onclick="showPage('page-home');return false">
@@ -634,341 +585,705 @@
         <span class="footer-brand-text">ARR Trading Hub</span>
       </a>
       <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Support</a>
-        <a href="#">Contact</a>
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Support</a>
+        <a href="#" onclick="showPage('page-admin-login');return false" style="color:#374151">Admin</a>
       </div>
     </div>
-    <div class="footer-copy">© 2025 ARR Trading Hub. All rights reserved. Payments are processed securely via licensed payment infrastructure.</div>
+    <div class="footer-copy">© 2025 ARR Trading Hub. All rights reserved. Payments processed via licensed secure infrastructure.</div>
   </footer>
-
 </div><!-- /page-home -->
 
 
-<!-- ══════════════════════════════ PAGE: CHECKOUT ══════════════════════════════ -->
+<!-- ════════════ PAGE: CHECKOUT ════════════ -->
 <div id="page-checkout" class="page">
   <div class="checkout-page">
     <div class="checkout-nav">
-      <button class="back-btn" onclick="showPage('page-home')">
-        <i class="fas fa-arrow-left"></i> Back
-      </button>
+      <button class="back-btn" onclick="showPage('page-home')"><i class="fas fa-arrow-left"></i> Back</button>
       <a href="#" class="logo" onclick="showPage('page-home');return false" style="text-decoration:none;display:flex;align-items:center;gap:8px">
-        <div class="logo-icon" style="width:32px;height:32px;font-size:15px">A</div>
-        <span class="logo-text" style="font-size:1rem">ARR <span>Trading Hub</span></span>
+        <div class="logo-icon" style="width:32px;height:32px;font-size:14px">A</div>
+        <span class="logo-text" style="font-size:0.97rem">ARR <span>Trading Hub</span></span>
       </a>
       <div class="progress-bar">
-        <div class="progress-step done"><div class="progress-dot"><i class="fas fa-check" style="font-size:0.6rem"></i></div></div>
+        <div class="progress-step done"><div class="progress-dot"><i class="fas fa-check" style="font-size:0.58rem"></i></div></div>
         <div class="progress-line done"></div>
-        <div class="progress-step active"><div class="progress-dot">2</div><span>Details</span></div>
+        <div class="progress-step active"><div class="progress-dot">2</div></div>
         <div class="progress-line"></div>
-        <div class="progress-step"><div class="progress-dot">3</div><span>Confirm</span></div>
+        <div class="progress-step"><div class="progress-dot">3</div></div>
       </div>
     </div>
-
     <div class="checkout-body">
-      <!-- MAIN FORM -->
       <div class="checkout-main">
         <div class="checkout-card">
-          <h3><i class="fas fa-user" style="color:var(--green);margin-right:8px"></i>Recipient Details</h3>
+          <h3><i class="fas fa-user" style="color:var(--green);margin-right:7px"></i>Recipient Details</h3>
           <div class="field-row">
-            <div class="checkout-field">
-              <label>First Name</label>
-              <input type="text" placeholder="John" id="recip-first"/>
-            </div>
-            <div class="checkout-field">
-              <label>Last Name</label>
-              <input type="text" placeholder="Doe" id="recip-last"/>
-            </div>
+            <div class="checkout-field"><label>First Name</label><input type="text" placeholder="John" id="recip-first"/></div>
+            <div class="checkout-field"><label>Last Name</label><input type="text" placeholder="Doe" id="recip-last"/></div>
           </div>
-          <div class="checkout-field">
-            <label>Email Address <span style="color:var(--gray-400);font-weight:400;text-transform:none">(optional)</span></label>
-            <input type="email" placeholder="recipient@email.com" id="recip-email"/>
-          </div>
-          <div class="checkout-field">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+234 801 234 5678" id="recip-phone"/>
-          </div>
+          <div class="checkout-field"><label>Email <span style="color:var(--gray-400);font-weight:400;text-transform:none;font-size:0.68rem">(optional)</span></label><input type="email" placeholder="recipient@email.com"/></div>
+          <div class="checkout-field"><label>Phone Number</label><input type="tel" placeholder="+234 801 234 5678"/></div>
         </div>
-
-        <div class="checkout-card" id="bank-details-card">
-          <h3><i class="fas fa-building-columns" style="color:var(--green);margin-right:8px"></i>Bank / Wallet Details</h3>
+        <div class="checkout-card">
+          <h3><i class="fas fa-building-columns" style="color:var(--green);margin-right:7px"></i>Bank / Wallet Details</h3>
           <div id="bank-fields-container"></div>
         </div>
-
         <div class="checkout-card">
-          <h3><i class="fas fa-wallet" style="color:var(--green);margin-right:8px"></i>Payment Method</h3>
-          <div class="payment-method-list" id="checkout-methods"></div>
+          <h3><i class="fas fa-wallet" style="color:var(--green);margin-right:7px"></i>Payment Method</h3>
+          <div class="pm-list" id="checkout-methods"></div>
         </div>
       </div>
-
-      <!-- SUMMARY -->
       <div class="checkout-summary">
         <div class="checkout-card">
-          <h3>Transfer Summary</h3>
-          <div class="summary-country-badge" id="summary-country-badge">
-            <span id="summary-flag">🌍</span>
-            <span id="summary-country-name">—</span>
-          </div>
-          <div class="summary-row"><span class="summary-label">You send</span><span class="summary-value" id="summary-send">$0.00</span></div>
-          <div class="summary-row"><span class="summary-label">Fee</span><span class="summary-value" id="summary-fee">$0.00</span></div>
-          <div class="summary-row"><span class="summary-label">They receive</span><span class="summary-value summary-total" id="summary-receive">—</span></div>
-          <div class="summary-row"><span class="summary-label">Method</span><span class="summary-value" id="summary-method">—</span></div>
-          <div class="summary-row"><span class="summary-label">Delivery</span><span class="summary-value" id="summary-delivery">—</span></div>
+          <h3>Summary</h3>
+          <div class="summary-country-badge"><span id="sum-flag">🌍</span><span id="sum-country">—</span></div>
+          <div class="summary-row"><span class="summary-label">You send</span><span class="summary-value" id="sum-send">$0</span></div>
+          <div class="summary-row"><span class="summary-label">Fee (1.5%)</span><span class="summary-value" id="sum-fee">$0</span></div>
+          <div class="summary-row"><span class="summary-label">They receive</span><span class="summary-value summary-total" id="sum-receive">—</span></div>
+          <div class="summary-row"><span class="summary-label">Method</span><span class="summary-value" id="sum-method">—</span></div>
+          <div class="summary-row"><span class="summary-label">Delivery</span><span class="summary-value" id="sum-delivery">—</span></div>
           <br/>
-          <button class="submit-btn" onclick="showPage('page-success')">
-            <i class="fas fa-paper-plane"></i> Confirm & Send
-          </button>
+          <button class="submit-btn" onclick="submitPayment()"><i class="fas fa-paper-plane"></i> Confirm & Send</button>
           <div class="secure-note"><i class="fas fa-lock"></i> 256-bit SSL encrypted</div>
         </div>
-
         <div class="checkout-card" style="background:var(--green-pale);border:1.5px solid var(--green-mid)">
-          <p style="font-size:0.82rem;color:var(--green-dark);line-height:1.65">
-            <i class="fas fa-circle-info" style="margin-right:6px"></i>
-            <strong>No account needed</strong> to send. However, <a href="#" onclick="showPage('page-register');return false" style="color:var(--green-dark);font-weight:700">registering</a> gives you transfer tracking, rewards, and faster repeat sends.
-          </p>
+          <p style="font-size:0.8rem;color:var(--green-dark);line-height:1.65"><i class="fas fa-circle-info" style="margin-right:5px"></i><strong>No account needed.</strong> <a href="#" onclick="showPage('page-register');return false" style="color:var(--green-dark);font-weight:700">Register</a> for transfer tracking & rewards.</p>
         </div>
       </div>
     </div>
   </div>
-</div><!-- /page-checkout -->
+</div>
 
 
-<!-- ══════════════════════════════ PAGE: SUCCESS ══════════════════════════════ -->
+<!-- ════════════ PAGE: SUCCESS ════════════ -->
 <div id="page-success" class="page">
   <div class="success-page">
     <div class="success-card">
       <div class="success-icon"><i class="fas fa-check"></i></div>
       <h2>Transfer Submitted!</h2>
-      <p>Your transfer has been submitted and is being processed. The recipient will receive their funds shortly.</p>
-      <div class="ref-box">Reference: <strong id="ref-number">ARR-2025-XXXXXX</strong></div>
-      <a href="#" class="btn-primary" style="display:inline-flex;margin:0 auto" onclick="showPage('page-home');return false">
-        <i class="fas fa-house"></i> Back to Home
-      </a>
+      <p>Your transfer is being processed. The recipient will receive their funds shortly. Check your email for confirmation.</p>
+      <div class="ref-box">Reference: <strong id="ref-num">ARR-2025-XXXXXXXX</strong></div>
+      <a href="#" class="btn-primary" style="display:inline-flex;margin:0 auto" onclick="showPage('page-home');return false"><i class="fas fa-house"></i> Back to Home</a>
     </div>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════ PAGE: REGISTER ══════════════════════════════ -->
+<!-- ════════════ PAGE: REGISTER ════════════ -->
 <div id="page-register" class="page">
-  <nav>
-    <a href="#" class="logo" onclick="showPage('page-home');return false">
-      <div class="logo-icon">A</div>
-      <span class="logo-text">ARR <span>Trading Hub</span></span>
-    </a>
-    <button class="back-btn" onclick="showPage('page-home')" style="font-size:0.87rem">
-      <i class="fas fa-arrow-left"></i> Back
-    </button>
-  </nav>
-  <div style="min-height:calc(100vh - 68px);background:#f9fafb;display:flex;align-items:center;justify-content:center;padding:40px 5%">
-    <div style="background:#fff;border-radius:20px;padding:40px 32px;max-width:440px;width:100%;box-shadow:0 8px 40px rgba(0,0,0,0.09)">
-      <div style="text-align:center;margin-bottom:28px">
-        <div class="logo-icon" style="margin:0 auto 12px;width:48px;height:48px;font-size:20px">A</div>
-        <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:6px">Create Free Account</h2>
-        <p style="color:var(--gray-600);font-size:0.87rem">Unlock transfer history, rewards & priority support</p>
-      </div>
-      <div class="field-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <div>
-          <div class="field-label" style="font-size:0.73rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px">First Name</div>
-          <input class="field" style="margin-bottom:0" type="text" placeholder="John"/>
+  <div class="auth-page">
+    <nav>
+      <a href="#" class="logo" onclick="showPage('page-home');return false">
+        <div class="logo-icon">A</div>
+        <span class="logo-text">ARR <span>Trading Hub</span></span>
+      </a>
+      <button class="back-btn" onclick="showPage('page-home')" style="font-size:0.85rem"><i class="fas fa-arrow-left"></i> Back</button>
+    </nav>
+    <div class="auth-body">
+      <div class="auth-card">
+        <div style="text-align:center;margin-bottom:22px">
+          <div class="logo-icon" style="margin:0 auto 10px;width:46px;height:46px;font-size:18px">A</div>
+          <h2>Create Free Account</h2>
+          <p>Unlock transfer history, rewards & priority support</p>
         </div>
-        <div>
-          <div class="field-label" style="font-size:0.73rem;font-weight:700;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px">Last Name</div>
-          <input class="field" style="margin-bottom:0" type="text" placeholder="Doe"/>
+        <div class="field-row" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0">
+          <div><div class="field-label">First Name</div><input class="field" type="text" placeholder="John"/></div>
+          <div><div class="field-label">Last Name</div><input class="field" type="text" placeholder="Doe"/></div>
         </div>
+        <input class="field" type="email" placeholder="Email address"/>
+        <input class="field" type="tel" placeholder="Phone number"/>
+        <input class="field" type="password" placeholder="Create password"/>
+        <button class="pay-btn" onclick="showPage('page-home')"><i class="fas fa-user-plus"></i> Create Account — It's Free</button>
+        <p style="text-align:center;color:var(--gray-400);font-size:0.75rem;margin-top:10px">Already have an account? <a href="#" style="color:var(--green);font-weight:700">Sign In</a></p>
       </div>
-      <input class="field" type="email" placeholder="Email address"/>
-      <input class="field" type="tel" placeholder="Phone number"/>
-      <input class="field" type="password" placeholder="Create password"/>
-      <button class="pay-btn" style="margin-top:4px" onclick="showPage('page-home')">
-        <i class="fas fa-user-plus"></i> Create Account — It's Free
-      </button>
-      <p style="text-align:center;color:var(--gray-400);font-size:0.77rem;margin-top:12px">
-        Already have an account? <a href="#" style="color:var(--green);font-weight:700">Sign In</a>
-      </p>
     </div>
   </div>
 </div>
 
 
-<!-- ══════════════════════════════ SCRIPTS ══════════════════════════════ -->
+<!-- ════════════ PAGE: ADMIN LOGIN ════════════ -->
+<div id="page-admin-login" class="page">
+  <div class="admin-login-page">
+    <div class="admin-login-card">
+      <div class="logo-wrap">
+        <div class="admin-icon"><i class="fas fa-shield-halved"></i></div>
+        <h2>Admin Access</h2>
+        <p>Restricted to authorized personnel only</p>
+      </div>
+      <div class="admin-field"><label>Username</label><input type="text" id="admin-user" placeholder="Enter username" autocomplete="off"/></div>
+      <div class="admin-field"><label>Password</label><input type="password" id="admin-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')adminLogin()"/></div>
+      <button class="admin-login-btn" onclick="adminLogin()"><i class="fas fa-lock"></i> Sign In to Control Panel</button>
+      <div class="admin-err" id="admin-err">❌ Invalid credentials. Access denied.</div>
+      <p style="text-align:center;font-size:0.75rem;color:var(--gray-400);margin-top:18px"><a href="#" onclick="showPage('page-home');return false" style="color:var(--gray-400)">← Back to site</a></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════ ADMIN PANEL ════════════ -->
+<div id="admin-panel" class="admin-page">
+  <div class="admin-topbar">
+    <div class="admin-topbar-left">
+      <div class="logo-icon" style="width:32px;height:32px;font-size:13px">A</div>
+      <span class="admin-topbar-title">ARR Admin Panel</span>
+      <span class="admin-topbar-badge">ADMIN</span>
+    </div>
+    <button class="admin-logout" onclick="adminLogout()"><i class="fas fa-right-from-bracket"></i> Logout</button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="admin-mobile-nav" id="admin-mobile-nav">
+    <div class="admin-mobile-nav-item active" onclick="switchAdminTab('dashboard',this)">Dashboard</div>
+    <div class="admin-mobile-nav-item" onclick="switchAdminTab('transactions',this)">Transactions</div>
+    <div class="admin-mobile-nav-item" onclick="switchAdminTab('users',this)">Users</div>
+    <div class="admin-mobile-nav-item" onclick="switchAdminTab('rates',this)">Rates</div>
+    <div class="admin-mobile-nav-item" onclick="switchAdminTab('settings',this)">Settings</div>
+    <div class="admin-mobile-nav-item" onclick="switchAdminTab('ai',this)">AI Assistant</div>
+  </div>
+
+  <div class="admin-body">
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+      <div class="admin-nav-item active" onclick="switchAdminTab('dashboard',this)"><i class="fas fa-gauge-high"></i> Dashboard</div>
+      <div class="admin-nav-item" onclick="switchAdminTab('transactions',this)"><i class="fas fa-exchange-alt"></i> Transactions</div>
+      <div class="admin-nav-item" onclick="switchAdminTab('users',this)"><i class="fas fa-users"></i> Users</div>
+      <div class="admin-nav-item" onclick="switchAdminTab('rates',this)"><i class="fas fa-chart-line"></i> Exchange Rates</div>
+      <div class="admin-nav-item" onclick="switchAdminTab('settings',this)"><i class="fas fa-cog"></i> Settings</div>
+      <div class="admin-nav-item" onclick="switchAdminTab('ai',this)"><i class="fas fa-robot"></i> AI Assistant</div>
+    </div>
+
+    <!-- Content -->
+    <div class="admin-content">
+
+      <!-- DASHBOARD -->
+      <div id="tab-dashboard" class="admin-section active">
+        <h2>Dashboard Overview</h2>
+        <div class="stats-grid">
+          <div class="admin-stat-card"><div class="stat-val">$84,320</div><div class="stat-lbl">Volume Today</div><div class="stat-change">↑ 12% from yesterday</div></div>
+          <div class="admin-stat-card"><div class="stat-val">347</div><div class="stat-lbl">Transactions Today</div><div class="stat-change">↑ 8% from yesterday</div></div>
+          <div class="admin-stat-card"><div class="stat-val">1,284</div><div class="stat-lbl">Total Users</div><div class="stat-change">↑ 23 new today</div></div>
+          <div class="admin-stat-card"><div class="stat-val">$1,264</div><div class="stat-lbl">Fees Collected Today</div><div class="stat-change">↑ 12% from yesterday</div></div>
+        </div>
+        <div class="admin-table-wrap">
+          <div class="admin-table-header"><h3>Recent Transactions</h3><button class="admin-btn" onclick="switchAdminTab('transactions',null)">View All</button></div>
+          <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Ref</th><th>Sender</th><th>Country</th><th>Amount</th><th>Status</th><th>Time</th></tr></thead>
+            <tbody id="dash-recent-tbody"></tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSACTIONS -->
+      <div id="tab-transactions" class="admin-section">
+        <h2>All Transactions</h2>
+        <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+          <input class="admin-table-search" placeholder="Search by ref, name…" oninput="filterTx(this.value)" style="width:100%;max-width:280px"/>
+          <select class="admin-table-search" style="width:auto" onchange="filterTxStatus(this.value)">
+            <option value="">All Statuses</option>
+            <option value="Completed">Completed</option>
+            <option value="Pending">Pending</option>
+            <option value="Processing">Processing</option>
+            <option value="Failed">Failed</option>
+          </select>
+        </div>
+        <div class="admin-table-wrap">
+          <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Ref</th><th>Sender</th><th>Recipient</th><th>Country</th><th>Amount</th><th>Fee</th><th>Method</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="tx-tbody"></tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- USERS -->
+      <div id="tab-users" class="admin-section">
+        <h2>Registered Users</h2>
+        <div style="margin-bottom:16px">
+          <input class="admin-table-search" placeholder="Search users…" style="width:100%;max-width:280px"/>
+        </div>
+        <div class="admin-table-wrap">
+          <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Transfers</th><th>Total Sent</th><th>Joined</th><th>Status</th></tr></thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- RATES -->
+      <div id="tab-rates" class="admin-section">
+        <h2>Exchange Rates (per $1 USD)</h2>
+        <p style="color:var(--gray-600);font-size:0.85rem;margin-bottom:20px">Update rates below. Changes apply immediately to all new transfers.</p>
+        <div class="rate-grid" id="rates-grid"></div>
+        <div style="margin-top:20px;display:flex;gap:10px">
+          <button class="admin-btn" onclick="saveRates()"><i class="fas fa-save"></i> Save All Rates</button>
+          <button class="admin-btn admin-btn-secondary" onclick="buildRatesGrid()"><i class="fas fa-rotate"></i> Reset</button>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div id="tab-settings" class="admin-section">
+        <h2>System Settings</h2>
+        <div class="settings-card">
+          <h3>General</h3>
+          <div class="settings-row">
+            <div><div class="settings-label">Site Name</div><div class="settings-desc">Displayed in header and emails</div></div>
+            <input class="settings-input" value="ARR Trading Hub"/>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Support Email</div><div class="settings-desc">Customer support contact</div></div>
+            <input class="settings-input" value="support@arrtrading.com"/>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Minimum Transfer</div><div class="settings-desc">Minimum USD amount</div></div>
+            <input class="settings-input" value="$10"/>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Maximum Transfer</div><div class="settings-desc">Per-transaction limit</div></div>
+            <input class="settings-input" value="$50,000"/>
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>Fees & Pricing</h3>
+          <div class="settings-row">
+            <div><div class="settings-label">Transfer Fee</div><div class="settings-desc">% deducted from send amount</div></div>
+            <input class="settings-input" value="1.5%"/>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">P2P Fee</div><div class="settings-desc">Applied when P2P goes live</div></div>
+            <input class="settings-input" value="0.8%"/>
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>Features</h3>
+          <div class="settings-row">
+            <div><div class="settings-label">P2P Trading</div><div class="settings-desc">Enable P2P marketplace</div></div>
+            <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Guest Transfers</div><div class="settings-desc">Allow sending without account</div></div>
+            <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">AI Chat Widget</div><div class="settings-desc">Show AI assistant on site</div></div>
+            <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+          </div>
+          <div class="settings-row">
+            <div><div class="settings-label">Maintenance Mode</div><div class="settings-desc">Take site offline for maintenance</div></div>
+            <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+          </div>
+        </div>
+        <button class="admin-btn"><i class="fas fa-save"></i> Save Settings</button>
+      </div>
+
+      <!-- AI ASSISTANT (ADMIN) -->
+      <div id="tab-ai" class="admin-section">
+        <h2>AI Assistant</h2>
+        <p style="color:var(--gray-600);font-size:0.87rem;margin-bottom:20px">Ask anything about your platform — transactions, users, rates, or get help managing the system.</p>
+        <div style="background:#fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;max-width:700px">
+          <div style="background:linear-gradient(135deg,var(--green),var(--green-light));padding:14px 20px;display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🤖</div>
+            <div><div style="color:#fff;font-weight:800;font-size:0.9rem">ARR AI — Admin Mode</div><div style="color:rgba(255,255,255,0.8);font-size:0.71rem">Full platform access · Always available</div></div>
+          </div>
+          <div id="admin-ai-messages" style="padding:16px;display:flex;flex-direction:column;gap:10px;min-height:280px;max-height:400px;overflow-y:auto">
+            <div class="ai-msg bot">👋 Hi Admin! I have full access to your platform data. Ask me anything — transaction summaries, user stats, rate recommendations, or how to use any feature.</div>
+          </div>
+          <div style="padding:12px;border-top:1px solid var(--gray-200);display:flex;gap:8px">
+            <input class="ai-input" id="admin-ai-input" placeholder="Ask about transactions, users, rates…" onkeydown="if(event.key==='Enter')sendAdminAI()"/>
+            <button class="ai-send-btn" onclick="sendAdminAI()"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /admin-content -->
+  </div><!-- /admin-body -->
+</div><!-- /admin-panel -->
+
+
+<!-- ════════════ AI CHAT WIDGET (PUBLIC) ════════════ -->
+<button class="ai-fab" onclick="toggleAIChat()" id="ai-fab" title="Chat with AI Assistant">
+  <i class="fas fa-robot"></i>
+</button>
+<div class="ai-chat-window" id="ai-chat-window">
+  <div class="ai-chat-header">
+    <div class="ai-chat-header-left">
+      <div class="ai-chat-avatar">🤖</div>
+      <div>
+        <div class="ai-chat-name">ARR Assistant</div>
+        <div class="ai-chat-status"><span class="ai-status-dot"></span> Online — always here</div>
+      </div>
+    </div>
+    <button class="ai-close-btn" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ai-messages" id="ai-messages">
+    <div class="ai-msg bot">👋 Hi! I'm ARR's AI assistant. I can help with:<br><br>• How to send money<br>• Supported countries & methods<br>• Transfer fees & rates<br>• Account help<br><br>What do you need?</div>
+  </div>
+  <div class="ai-input-row">
+    <input class="ai-input" id="ai-input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendAI()"/>
+    <button class="ai-send-btn" onclick="sendAI()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+
+<!-- ════════════ SCRIPTS ════════════ -->
 <script>
-  // ─── DATA ───
-  const COUNTRY_DATA = {
-    'NG':    { flag:'🇳🇬', name:'Nigeria',       currency:'NGN', rate:1580, methods:[{icon:'🏦',name:'Bank Transfer',sub:'GTBank, Zenith, Access, UBA',speed:'1–3 hrs'},{icon:'📱',name:'Mobile Money',sub:'Opay, Palmpay, Kuda',speed:'Instant'},{icon:'💵',name:'Cash Pickup',sub:'Nationwide agents',speed:'Same day'}] },
-    'GH':    { flag:'🇬🇭', name:'Ghana',         currency:'GHS', rate:15.6,  methods:[{icon:'📱',name:'Mobile Money',sub:'MTN MoMo, Vodafone Cash',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'GCB, Ecobank, Stanbic',speed:'2–4 hrs'}] },
-    'KE':    { flag:'🇰🇪', name:'Kenya',         currency:'KES', rate:129,   methods:[{icon:'📱',name:'M-PESA',sub:'Safaricom M-PESA',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'KCB, Equity, Cooperative',speed:'2–4 hrs'}] },
-    'ZA':    { flag:'🇿🇦', name:'South Africa', currency:'ZAR', rate:18.6,  methods:[{icon:'🏦',name:'Bank Transfer',sub:'Standard Bank, FNB, ABSA',speed:'3–6 hrs'},{icon:'💵',name:'Cash Pickup',sub:'Shoprite, Pick n Pay',speed:'Same day'}] },
-    'UG':    { flag:'🇺🇬', name:'Uganda',        currency:'UGX', rate:3720,  methods:[{icon:'📱',name:'Mobile Money',sub:'MTN Mobile Money, Airtel',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'Stanbic, Centenary',speed:'3–5 hrs'}] },
-    'TZ':    { flag:'🇹🇿', name:'Tanzania',      currency:'TZS', rate:2600,  methods:[{icon:'📱',name:'Mobile Money',sub:'M-PESA, Tigo Pesa, Airtel',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'CRDB, NMB, NBC',speed:'3–5 hrs'}] },
-    'RW':    { flag:'🇷🇼', name:'Rwanda',        currency:'RWF', rate:1340,  methods:[{icon:'📱',name:'Mobile Money',sub:'MTN MoMo, Airtel Money',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'BK, BPR, Equity',speed:'2–4 hrs'}] },
-    'SN':    { flag:'🇸🇳', name:'Senegal',       currency:'XOF', rate:615,   methods:[{icon:'📱',name:'Mobile Money',sub:'Orange Money, Wave',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'CBAO, Ecobank',speed:'3–5 hrs'}] },
-    'CI':    { flag:'🇨🇮', name:"Côte d'Ivoire", currency:'XOF', rate:615,  methods:[{icon:'📱',name:'Mobile Money',sub:'MTN MoMo, Orange Money',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'Société Générale, Ecobank',speed:'3–5 hrs'}] },
-    'CM':    { flag:'🇨🇲', name:'Cameroon',      currency:'XAF', rate:615,   methods:[{icon:'📱',name:'Mobile Money',sub:'MTN MoMo, Orange Money',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'Afriland, BICEC',speed:'3–5 hrs'}] },
-    'ET':    { flag:'🇪🇹', name:'Ethiopia',      currency:'ETB', rate:57,    methods:[{icon:'🏦',name:'Bank Transfer',sub:'CBE, Awash, Dashen',speed:'3–6 hrs'}] },
-    'EG':    { flag:'🇪🇬', name:'Egypt',         currency:'EGP', rate:49,    methods:[{icon:'🏦',name:'Bank Transfer',sub:'CIB, NBE, Banque Misr',speed:'3–6 hrs'},{icon:'📱',name:'InstaPay / Vodafone Cash',sub:'Mobile wallet',speed:'Instant'}] },
-    'MA':    { flag:'🇲🇦', name:'Morocco',       currency:'MAD', rate:10.1,  methods:[{icon:'🏦',name:'Bank Transfer',sub:'Attijariwafa, BMCE, CIH',speed:'3–6 hrs'}] },
-    'BD':    { flag:'🇧🇩', name:'Bangladesh',    currency:'BDT', rate:110,   methods:[{icon:'📱',name:'bKash / Nagad',sub:'Mobile wallet',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'Dutch-Bangla, BRAC',speed:'3–5 hrs'}] },
-    'PK':    { flag:'🇵🇰', name:'Pakistan',      currency:'PKR', rate:278,   methods:[{icon:'📱',name:'Easypaisa / JazzCash',sub:'Mobile wallet',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'HBL, MCB, UBL',speed:'3–5 hrs'}] },
-    'IN':    { flag:'🇮🇳', name:'India',         currency:'INR', rate:83.5,  methods:[{icon:'📱',name:'UPI / Paytm',sub:'Instant mobile pay',speed:'Instant'},{icon:'🏦',name:'Bank Transfer (IMPS)',sub:'All Indian banks',speed:'Instant'}] },
-    'PH':    { flag:'🇵🇭', name:'Philippines',   currency:'PHP', rate:57,    methods:[{icon:'📱',name:'GCash / Maya',sub:'Mobile wallet',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'BDO, BPI, Metrobank',speed:'3–5 hrs'}] },
-    'ID':    { flag:'🇮🇩', name:'Indonesia',     currency:'IDR', rate:15800, methods:[{icon:'📱',name:'OVO / GoPay / DANA',sub:'Mobile wallet',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'BCA, BRI, Mandiri',speed:'3–5 hrs'}] },
-    'VN':    { flag:'🇻🇳', name:'Vietnam',       currency:'VND', rate:24900, methods:[{icon:'🏦',name:'Bank Transfer',sub:'Vietcombank, Techcombank',speed:'3–5 hrs'},{icon:'📱',name:'MoMo / ZaloPay',sub:'Mobile wallet',speed:'Instant'}] },
-    'MX':    { flag:'🇲🇽', name:'Mexico',        currency:'MXN', rate:17.2,  methods:[{icon:'🏦',name:'SPEI Transfer',sub:'All Mexican banks',speed:'Instant'},{icon:'💵',name:'Cash Pickup',sub:'OXXO, 7-Eleven',speed:'Same day'}] },
-    'CO':    { flag:'🇨🇴', name:'Colombia',      currency:'COP', rate:4000,  methods:[{icon:'🏦',name:'Bank Transfer',sub:'Bancolombia, Davivienda',speed:'3–5 hrs'},{icon:'💵',name:'Cash Pickup',sub:'Efecty agents',speed:'Same day'}] },
-    'BR':    { flag:'🇧🇷', name:'Brazil',        currency:'BRL', rate:5.1,   methods:[{icon:'📱',name:'PIX Transfer',sub:'Instant Brazilian payment',speed:'Instant'},{icon:'🏦',name:'TED/DOC',sub:'Itaú, Bradesco, Caixa',speed:'Same day'}] },
-    'PE':    { flag:'🇵🇪', name:'Peru',          currency:'PEN', rate:3.8,   methods:[{icon:'🏦',name:'Bank Transfer',sub:'BCP, BBVA, Interbank',speed:'3–5 hrs'}] },
-    'TH':    { flag:'🇹🇭', name:'Thailand',      currency:'THB', rate:35.5,  methods:[{icon:'📱',name:'PromptPay',sub:'Instant mobile transfer',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'Bangkok Bank, SCB',speed:'3–5 hrs'}] },
-    'TR':    { flag:'🇹🇷', name:'Turkey',        currency:'TRY', rate:32,    methods:[{icon:'🏦',name:'Bank Transfer (FAST/EFT)',sub:'Ziraat, İş Bankası, Garanti',speed:'Instant'}] },
-    'UA':    { flag:'🇺🇦', name:'Ukraine',       currency:'UAH', rate:39.5,  methods:[{icon:'📱',name:'Monobank / PrivatBank',sub:'Mobile wallet / card',speed:'Instant'},{icon:'🏦',name:'Bank Transfer',sub:'PrivatBank, Oschadbank',speed:'3–5 hrs'}] },
-    'PL':    { flag:'🇵🇱', name:'Poland',        currency:'PLN', rate:4.1,   methods:[{icon:'🏦',name:'BLIK / Bank Transfer',sub:'PKO, mBank, ING',speed:'Instant'}] },
-    'NG-BTC':{ flag:'₿',   name:'Crypto',        currency:'BTC/USDT', rate:1, methods:[{icon:'₿',name:'Bitcoin (BTC)',sub:'On-chain transfer',speed:'30–60 min'},{icon:'🔵',name:'USDT (TRC20)',sub:'Tron network',speed:'2–5 min'},{icon:'🔵',name:'USDT (ERC20)',sub:'Ethereum network',speed:'5–15 min'}] }
-  };
+// ─── COUNTRY DATA ───
+const CD = {
+  'NG':{flag:'🇳🇬',name:'Nigeria',cur:'NGN',rate:1580,methods:[{i:'🏦',n:'Bank Transfer',s:'GTBank, Zenith, Access, UBA',t:'1–3 hrs'},{i:'📱',n:'Mobile Money',s:'Opay, Palmpay, Kuda',t:'Instant'},{i:'💵',n:'Cash Pickup',s:'Nationwide agents',t:'Same day'}]},
+  'GH':{flag:'🇬🇭',name:'Ghana',cur:'GHS',rate:15.6,methods:[{i:'📱',n:'Mobile Money',s:'MTN MoMo, Vodafone Cash',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'GCB, Ecobank, Stanbic',t:'2–4 hrs'}]},
+  'KE':{flag:'🇰🇪',name:'Kenya',cur:'KES',rate:129,methods:[{i:'📱',n:'M-PESA',s:'Safaricom M-PESA',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'KCB, Equity, Cooperative',t:'2–4 hrs'}]},
+  'ZA':{flag:'🇿🇦',name:'South Africa',cur:'ZAR',rate:18.6,methods:[{i:'🏦',n:'Bank Transfer',s:'Standard Bank, FNB, ABSA',t:'3–6 hrs'},{i:'💵',n:'Cash Pickup',s:'Shoprite, Pick n Pay',t:'Same day'}]},
+  'UG':{flag:'🇺🇬',name:'Uganda',cur:'UGX',rate:3720,methods:[{i:'📱',n:'Mobile Money',s:'MTN Mobile Money, Airtel',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'Stanbic, Centenary',t:'3–5 hrs'}]},
+  'TZ':{flag:'🇹🇿',name:'Tanzania',cur:'TZS',rate:2600,methods:[{i:'📱',n:'Mobile Money',s:'M-PESA, Tigo Pesa',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'CRDB, NMB, NBC',t:'3–5 hrs'}]},
+  'RW':{flag:'🇷🇼',name:'Rwanda',cur:'RWF',rate:1340,methods:[{i:'📱',n:'Mobile Money',s:'MTN MoMo, Airtel',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'BK, BPR, Equity',t:'2–4 hrs'}]},
+  'SN':{flag:'🇸🇳',name:'Senegal',cur:'XOF',rate:615,methods:[{i:'📱',n:'Mobile Money',s:'Orange Money, Wave',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'CBAO, Ecobank',t:'3–5 hrs'}]},
+  'CI':{flag:'🇨🇮',name:"Côte d'Ivoire",cur:'XOF',rate:615,methods:[{i:'📱',n:'Mobile Money',s:'MTN MoMo, Orange Money',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'Société Générale',t:'3–5 hrs'}]},
+  'CM':{flag:'🇨🇲',name:'Cameroon',cur:'XAF',rate:615,methods:[{i:'📱',n:'Mobile Money',s:'MTN MoMo, Orange Money',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'Afriland, BICEC',t:'3–5 hrs'}]},
+  'ET':{flag:'🇪🇹',name:'Ethiopia',cur:'ETB',rate:57,methods:[{i:'🏦',n:'Bank Transfer',s:'CBE, Awash, Dashen',t:'3–6 hrs'}]},
+  'EG':{flag:'🇪🇬',name:'Egypt',cur:'EGP',rate:49,methods:[{i:'🏦',n:'Bank Transfer',s:'CIB, NBE, Banque Misr',t:'3–6 hrs'},{i:'📱',n:'InstaPay / Vodafone Cash',s:'Mobile wallet',t:'Instant'}]},
+  'MA':{flag:'🇲🇦',name:'Morocco',cur:'MAD',rate:10.1,methods:[{i:'🏦',n:'Bank Transfer',s:'Attijariwafa, BMCE',t:'3–6 hrs'}]},
+  'BD':{flag:'🇧🇩',name:'Bangladesh',cur:'BDT',rate:110,methods:[{i:'📱',n:'bKash / Nagad',s:'Mobile wallet',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'Dutch-Bangla, BRAC',t:'3–5 hrs'}]},
+  'PK':{flag:'🇵🇰',name:'Pakistan',cur:'PKR',rate:278,methods:[{i:'📱',n:'Easypaisa / JazzCash',s:'Mobile wallet',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'HBL, MCB, UBL',t:'3–5 hrs'}]},
+  'IN':{flag:'🇮🇳',name:'India',cur:'INR',rate:83.5,methods:[{i:'📱',n:'UPI / Paytm',s:'Instant mobile pay',t:'Instant'},{i:'🏦',n:'IMPS Bank Transfer',s:'All Indian banks',t:'Instant'}]},
+  'PH':{flag:'🇵🇭',name:'Philippines',cur:'PHP',rate:57,methods:[{i:'📱',n:'GCash / Maya',s:'Mobile wallet',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'BDO, BPI, Metrobank',t:'3–5 hrs'}]},
+  'ID':{flag:'🇮🇩',name:'Indonesia',cur:'IDR',rate:15800,methods:[{i:'📱',n:'OVO / GoPay / DANA',s:'Mobile wallet',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'BCA, BRI, Mandiri',t:'3–5 hrs'}]},
+  'VN':{flag:'🇻🇳',name:'Vietnam',cur:'VND',rate:24900,methods:[{i:'🏦',n:'Bank Transfer',s:'Vietcombank, Techcombank',t:'3–5 hrs'},{i:'📱',n:'MoMo / ZaloPay',s:'Mobile wallet',t:'Instant'}]},
+  'MX':{flag:'🇲🇽',name:'Mexico',cur:'MXN',rate:17.2,methods:[{i:'🏦',n:'SPEI Transfer',s:'All Mexican banks',t:'Instant'},{i:'💵',n:'Cash Pickup',s:'OXXO, 7-Eleven',t:'Same day'}]},
+  'CO':{flag:'🇨🇴',name:'Colombia',cur:'COP',rate:4000,methods:[{i:'🏦',n:'Bank Transfer',s:'Bancolombia, Davivienda',t:'3–5 hrs'},{i:'💵',n:'Cash Pickup',s:'Efecty agents',t:'Same day'}]},
+  'BR':{flag:'🇧🇷',name:'Brazil',cur:'BRL',rate:5.1,methods:[{i:'📱',n:'PIX Transfer',s:'Instant Brazilian payment',t:'Instant'},{i:'🏦',n:'TED/DOC',s:'Itaú, Bradesco, Caixa',t:'Same day'}]},
+  'PE':{flag:'🇵🇪',name:'Peru',cur:'PEN',rate:3.8,methods:[{i:'🏦',n:'Bank Transfer',s:'BCP, BBVA, Interbank',t:'3–5 hrs'}]},
+  'TH':{flag:'🇹🇭',name:'Thailand',cur:'THB',rate:35.5,methods:[{i:'📱',n:'PromptPay',s:'Instant mobile transfer',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'Bangkok Bank, SCB',t:'3–5 hrs'}]},
+  'TR':{flag:'🇹🇷',name:'Turkey',cur:'TRY',rate:32,methods:[{i:'🏦',n:'Bank Transfer (FAST)',s:'Ziraat, İş Bankası, Garanti',t:'Instant'}]},
+  'UA':{flag:'🇺🇦',name:'Ukraine',cur:'UAH',rate:39.5,methods:[{i:'📱',n:'Monobank / PrivatBank',s:'Mobile wallet',t:'Instant'},{i:'🏦',n:'Bank Transfer',s:'PrivatBank, Oschadbank',t:'3–5 hrs'}]},
+  'PL':{flag:'🇵🇱',name:'Poland',cur:'PLN',rate:4.1,methods:[{i:'🏦',n:'BLIK / Bank Transfer',s:'PKO, mBank, ING',t:'Instant'}]},
+  'BTC':{flag:'₿',name:'Crypto',cur:'BTC/USDT',rate:1,methods:[{i:'₿',n:'Bitcoin (BTC)',s:'On-chain transfer',t:'30–60 min'},{i:'🔵',n:'USDT (TRC20)',s:'Tron network',t:'2–5 min'},{i:'🔵',n:'USDT (ERC20)',s:'Ethereum network',t:'5–15 min'}]}
+};
+const RATES_EDITABLE = Object.fromEntries(Object.entries(CD).map(([k,v])=>[k,v.rate]));
 
-  const FEE_RATE = 0.015; // 1.5%
+// ─── ADMIN CREDENTIALS (change these!) ───
+const ADMIN_USER = 'arr_admin';
+const ADMIN_PASS = 'ARR@2025!Secure';
 
-  let selectedCountry = '';
-  let selectedMethod = '';
-  let sendAmount = 0;
+let selCountry='', selMethod='', sendAmt=0;
 
-  // ─── PAGE ROUTING ───
-  function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+// ─── PAGE SYSTEM ───
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.admin-page').forEach(p=>p.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el){
+    if(el.classList.contains('admin-page')) el.classList.add('active');
+    else el.classList.add('active');
+  }
+  window.scrollTo(0,0);
+  closeMenu();
+  // Hide AI fab on admin
+  const fab=document.getElementById('ai-fab');
+  const chatWin=document.getElementById('ai-chat-window');
+  if(fab){fab.style.display=(id==='admin-panel'||id==='page-admin-login')?'none':'flex'}
+  if(chatWin && (id==='admin-panel'||id==='page-admin-login'))chatWin.classList.remove('open');
+}
+
+// ─── MOBILE MENU ───
+function toggleMenu(){
+  const m=document.getElementById('mobile-menu');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  const m=document.getElementById('mobile-menu');
+  if(m) m.classList.remove('open');
+}
+
+// ─── HERO FORM ───
+function updateHeroMethods(){
+  const val=document.getElementById('hero-country').value;
+  const wrap=document.getElementById('hero-methods-wrap');
+  const none=document.getElementById('hero-no-country');
+  const list=document.getElementById('hero-methods');
+  if(!val){wrap.style.display='none';none.style.display='block';return}
+  wrap.style.display='block';none.style.display='none';
+  const d=CD[val];
+  list.innerHTML=d.methods.map((m,i)=>`
+    <div class="method-item${i===0?' selected':''}" onclick="selHeroMethod(this,'${m.n}')">
+      <div class="method-left"><span class="method-icon">${m.i}</span>
+      <div><div class="method-name">${m.n}</div><div class="method-speed">${m.s} · ${m.t}</div></div></div>
+      <i class="fas fa-circle-check method-check"></i>
+    </div>`).join('');
+  selMethod=d.methods[0].n;
+}
+function selHeroMethod(el,name){
+  document.querySelectorAll('#hero-methods .method-item').forEach(m=>m.classList.remove('selected'));
+  el.classList.add('selected'); selMethod=name;
+}
+function setAmt(v,btn){
+  document.querySelectorAll('.amount-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('hero-amount').value=v; sendAmt=v;
+}
+function quickSelect(code){
+  const sel=document.getElementById('hero-country');
+  sel.value=code; updateHeroMethods();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function proceedToCheckout(){
+  const sel=document.getElementById('hero-country');
+  const amt=parseFloat(document.getElementById('hero-amount').value)||0;
+  if(!sel.value){alert('Please select a destination country.');return}
+  if(amt<10){alert('Minimum transfer is $10.');return}
+  selCountry=sel.value; sendAmt=amt;
+  buildCheckout(); showPage('page-checkout');
+}
+
+// ─── CHECKOUT ───
+function buildCheckout(){
+  const d=CD[selCountry];
+  const fee=+(sendAmt*0.015).toFixed(2);
+  const net=sendAmt-fee;
+  const rec=(net*d.rate).toLocaleString(undefined,{maximumFractionDigits:0});
+  document.getElementById('sum-flag').textContent=d.flag;
+  document.getElementById('sum-country').textContent=d.name+' ('+d.cur+')';
+  document.getElementById('sum-send').textContent='$'+sendAmt.toFixed(2);
+  document.getElementById('sum-fee').textContent='$'+fee;
+  document.getElementById('sum-receive').textContent=rec+' '+d.cur;
+  document.getElementById('sum-delivery').textContent=d.methods[0].t;
+  document.getElementById('sum-method').textContent=selMethod||d.methods[0].n;
+  const pm=document.getElementById('checkout-methods');
+  pm.innerHTML=d.methods.map((m,i)=>`
+    <div class="pm-item${i===0?' selected':''}" onclick="selPM(this,'${m.n}','${m.t}')">
+      <div class="pm-left"><span class="pm-icon">${m.i}</span>
+      <div><div class="pm-name">${m.n}</div><div class="pm-sub">${m.s} · ${m.t}</div></div></div>
+      <i class="fas fa-circle-check pm-check"></i>
+    </div>`).join('');
+  buildBankFields(selCountry);
+  document.getElementById('ref-num').textContent='ARR-'+Date.now().toString().slice(-8);
+}
+function selPM(el,name,speed){
+  document.querySelectorAll('#checkout-methods .pm-item').forEach(m=>m.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('sum-method').textContent=name;
+  document.getElementById('sum-delivery').textContent=speed;
+}
+function buildBankFields(code){
+  const c=document.getElementById('bank-fields-container'); let h='';
+  if(['NG','GH','ZA','ET','EG','MA'].includes(code)){
+    h=`<div class="checkout-field"><label>Bank Name</label><select style="width:100%;border:2px solid var(--gray-200);border-radius:9px;padding:10px 12px;font-size:0.87rem;font-family:inherit;outline:none;appearance:none"><option>Select bank</option></select></div>
+       <div class="checkout-field"><label>Account Number</label><input type="text" placeholder="0123456789"/></div>
+       <div class="checkout-field"><label>Account Name</label><input type="text" placeholder="As on bank records"/></div>`;
+  } else if(['KE','UG','TZ','RW','SN','CI','CM','BD','PK'].includes(code)){
+    h=`<div class="checkout-field"><label>Mobile Wallet Number</label><input type="tel" placeholder="+XXX XXXX XXXXX"/></div>
+       <div class="checkout-field"><label>Wallet Provider</label><input type="text" placeholder="e.g. M-PESA, bKash"/></div>`;
+  } else if(code==='IN'){
+    h=`<div class="checkout-field"><label>UPI ID or Phone</label><input type="text" placeholder="name@upi or +91 XXXXX"/></div>`;
+  } else if(code==='BR'){
+    h=`<div class="checkout-field"><label>PIX Key (CPF, Phone or Email)</label><input type="text" placeholder="Enter PIX key"/></div>`;
+  } else if(code==='BTC'){
+    h=`<div class="checkout-field"><label>Wallet Address</label><input type="text" placeholder="BTC/USDT wallet address"/></div>
+       <div class="checkout-field"><label>Network</label><select style="width:100%;border:2px solid var(--gray-200);border-radius:9px;padding:10px 12px;font-size:0.87rem;font-family:inherit;outline:none;appearance:none"><option>Bitcoin</option><option>TRC20 (Tron)</option><option>ERC20 (Ethereum)</option></select></div>`;
+  } else {
+    h=`<div class="checkout-field"><label>Bank Name</label><input type="text" placeholder="Recipient's bank"/></div>
+       <div class="checkout-field"><label>IBAN / Account Number</label><input type="text" placeholder="Account or IBAN"/></div>
+       <div class="checkout-field"><label>SWIFT / BIC</label><input type="text" placeholder="SWIFT code"/></div>`;
+  }
+  c.innerHTML=h;
+}
+function submitPayment(){showPage('page-success')}
+
+// ─── ADMIN AUTH ───
+function adminLogin(){
+  const u=document.getElementById('admin-user').value.trim();
+  const p=document.getElementById('admin-pass').value;
+  const err=document.getElementById('admin-err');
+  if(u===ADMIN_USER && p===ADMIN_PASS){
+    err.style.display='none';
+    document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+    document.getElementById('admin-panel').classList.add('active');
+    document.getElementById('ai-fab').style.display='none';
+    buildAdminData();
     window.scrollTo(0,0);
+  } else {
+    err.style.display='block';
+    document.getElementById('admin-pass').value='';
   }
+}
+function adminLogout(){showPage('page-home')}
 
-  // ─── HERO FORM ───
-  function updateHeroMethods() {
-    const sel = document.getElementById('hero-country');
-    const val = sel.value;
-    const wrap = document.getElementById('hero-methods-wrap');
-    const noCountry = document.getElementById('hero-no-country');
-    const list = document.getElementById('hero-methods');
+// ─── ADMIN TABS ───
+function switchAdminTab(tab, el){
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  // sidebar
+  document.querySelectorAll('.admin-nav-item').forEach(n=>n.classList.remove('active'));
+  if(el && el.classList.contains('admin-nav-item')) el.classList.add('active');
+  // mobile nav
+  document.querySelectorAll('.admin-mobile-nav-item').forEach(n=>n.classList.remove('active'));
+  if(el && el.classList.contains('admin-mobile-nav-item')) el.classList.add('active');
+  // special builds
+  if(tab==='rates') buildRatesGrid();
+}
 
-    if (!val) { wrap.style.display='none'; noCountry.style.display='block'; return; }
-    wrap.style.display='block'; noCountry.style.display='none';
-    const data = COUNTRY_DATA[val];
-    list.innerHTML = data.methods.map((m,i) => `
-      <div class="method-item${i===0?' selected':''}" onclick="selectHeroMethod(this,'${m.name}')">
-        <div class="method-left">
-          <span class="method-icon">${m.icon}</span>
-          <div><div class="method-name">${m.name}</div><div class="method-speed">${m.sub} · ${m.speed}</div></div>
-        </div>
-        <i class="fas fa-circle-check method-check"></i>
-      </div>`).join('');
-    selectedMethod = data.methods[0].name;
+// ─── SAMPLE DATA ───
+const SAMPLE_TX=[
+  {ref:'ARR-89234751',sender:'James Okafor',recip:'Mary Okafor',country:'🇳🇬 Nigeria',amt:'$250',fee:'$3.75',method:'Bank Transfer',status:'Completed',time:'2 min ago'},
+  {ref:'ARR-89234689',sender:'Kofi Asante',recip:'Ama Asante',country:'🇬🇭 Ghana',amt:'$100',fee:'$1.50',method:'Mobile Money',status:'Processing',time:'8 min ago'},
+  {ref:'ARR-89234603',sender:'Priya Sharma',recip:'Raj Sharma',country:'🇮🇳 India',amt:'$500',fee:'$7.50',method:'UPI',status:'Completed',time:'15 min ago'},
+  {ref:'ARR-89234521',sender:'Carlos Mendez',recip:'Ana Mendez',country:'🇲🇽 Mexico',amt:'$150',fee:'$2.25',method:'SPEI',status:'Pending',time:'22 min ago'},
+  {ref:'ARR-89234498',sender:'Fatima Al-Hassan',recip:'Omar Al-Hassan',country:'🇪🇬 Egypt',amt:'$300',fee:'$4.50',method:'Bank Transfer',status:'Completed',time:'31 min ago'},
+  {ref:'ARR-89234401',sender:'David Kimani',recip:'Grace Kimani',country:'🇰🇪 Kenya',amt:'$75',fee:'$1.13',method:'M-PESA',status:'Failed',time:'45 min ago'},
+  {ref:'ARR-89234388',sender:'Nguyen Thi Lan',recip:'Nguyen Van An',country:'🇻🇳 Vietnam',amt:'$200',fee:'$3.00',method:'Bank Transfer',status:'Completed',time:'1 hr ago'},
+  {ref:'ARR-89234210',sender:'Ali Hassan',recip:'Zara Hassan',country:'🇵🇰 Pakistan',amt:'$400',fee:'$6.00',method:'JazzCash',status:'Completed',time:'2 hrs ago'},
+];
+const SAMPLE_USERS=[
+  {name:'James Okafor',email:'james@email.com',phone:'+234 801 234 5678',transfers:12,total:'$2,450',joined:'Jan 2025',status:'Active'},
+  {name:'Kofi Asante',email:'kofi@email.com',phone:'+233 20 123 4567',transfers:5,total:'$820',joined:'Feb 2025',status:'Active'},
+  {name:'Priya Sharma',email:'priya@email.com',phone:'+91 98765 43210',transfers:24,total:'$8,200',joined:'Dec 2024',status:'Active'},
+  {name:'Carlos Mendez',email:'carlos@email.com',phone:'+52 55 1234 5678',transfers:8,total:'$1,600',joined:'Mar 2025',status:'Active'},
+  {name:'Fatima Al-Hassan',email:'fatima@email.com',phone:'+20 10 1234 5678',transfers:3,total:'$900',joined:'Apr 2025',status:'Active'},
+  {name:'David Kimani',email:'david@email.com',phone:'+254 712 345678',transfers:15,total:'$3,100',joined:'Nov 2024',status:'Suspended'},
+];
+
+function buildAdminData(){
+  // Dashboard recent
+  const dashBody=document.getElementById('dash-recent-tbody');
+  if(dashBody) dashBody.innerHTML=SAMPLE_TX.slice(0,5).map(t=>`
+    <tr><td><code style="font-size:0.77rem;background:var(--gray-100);padding:2px 6px;border-radius:4px">${t.ref}</code></td>
+    <td>${t.sender}</td><td>${t.country}</td><td style="font-weight:700">${t.amt}</td>
+    <td><span class="status-badge status-${t.status.toLowerCase()}">${t.status}</span></td>
+    <td style="color:var(--gray-400)">${t.time}</td></tr>`).join('');
+  // All transactions
+  const txBody=document.getElementById('tx-tbody');
+  if(txBody) txBody.innerHTML=SAMPLE_TX.map(t=>`
+    <tr><td><code style="font-size:0.75rem;background:var(--gray-100);padding:2px 5px;border-radius:4px">${t.ref}</code></td>
+    <td>${t.sender}</td><td>${t.recip}</td><td>${t.country}</td>
+    <td style="font-weight:700">${t.amt}</td><td style="color:var(--gray-600)">${t.fee}</td>
+    <td>${t.method}</td>
+    <td><span class="status-badge status-${t.status.toLowerCase()}">${t.status}</span></td>
+    <td><button class="admin-btn admin-btn-secondary" style="padding:5px 10px;font-size:0.74rem">View</button></td></tr>`).join('');
+  // Users
+  const usersBody=document.getElementById('users-tbody');
+  if(usersBody) usersBody.innerHTML=SAMPLE_USERS.map(u=>`
+    <tr><td style="font-weight:700">${u.name}</td><td>${u.email}</td><td>${u.phone}</td>
+    <td>${u.transfers}</td><td style="font-weight:700;color:var(--green)">${u.total}</td>
+    <td style="color:var(--gray-400)">${u.joined}</td>
+    <td><span class="status-badge ${u.status==='Active'?'status-completed':'status-failed'}">${u.status}</span></td></tr>`).join('');
+}
+
+function filterTx(q){
+  const rows=document.querySelectorAll('#tx-tbody tr');
+  rows.forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'});
+}
+function filterTxStatus(s){
+  const rows=document.querySelectorAll('#tx-tbody tr');
+  rows.forEach(r=>{r.style.display=(!s||r.textContent.includes(s))?'':'none'});
+}
+
+function buildRatesGrid(){
+  const grid=document.getElementById('rates-grid');
+  if(!grid) return;
+  grid.innerHTML=Object.entries(CD).filter(([k])=>k!=='BTC').map(([k,v])=>`
+    <div class="rate-item">
+      <div><div class="rate-country">${v.flag} ${v.name}</div><div style="font-size:0.7rem;color:var(--gray-400)">${v.cur}</div></div>
+      <input class="rate-input" id="rate-${k}" value="${v.rate}" type="number"/>
+    </div>`).join('');
+}
+function saveRates(){
+  Object.keys(CD).filter(k=>k!=='BTC').forEach(k=>{
+    const inp=document.getElementById('rate-'+k);
+    if(inp) CD[k].rate=parseFloat(inp.value)||CD[k].rate;
+  });
+  alert('✅ Rates saved successfully!');
+}
+
+// ─── AI CHAT (PUBLIC) ───
+const AI_KB=[
+  {q:['send','transfer','money'],a:'To send money, select your destination country in the Quick Send form, enter the amount, choose a payment method, then click "Continue to Payment". No account needed!'},
+  {q:['fee','cost','charge','how much'],a:'We charge a flat 1.5% fee on all transfers. You'll see the exact fee before confirming. No hidden charges.'},
+  {q:['countries','where','destination','send to'],a:'We support 40+ countries including Nigeria, Ghana, Kenya, India, Philippines, Brazil, Mexico, UK, and many more. Tap any country in our Countries section to start.'},
+  {q:['account','register','sign up','signup'],a:'You can send without any account! Register for free to get transfer history, loyalty rewards, and priority support.'},
+  {q:['how long','time','fast','instant','speed','delivery'],a:'Most mobile money transfers are instant. Bank transfers take 1–6 hours depending on the country. Crypto takes 2–60 minutes.'},
+  {q:['safe','secure','trust','scam','legit'],a:'ARR Trading Hub uses 256-bit SSL encryption and has processed $48M+ in transfers since 2020. We never store payment card details.'},
+  {q:['p2p','peer'],a:'P2P trading is coming soon! It will allow you to trade directly with verified peers at better rates with escrow protection.'},
+  {q:['mobile money','mpesa','momo','opay','palmpay'],a:'Yes! We support most major mobile wallets — M-PESA, MTN MoMo, Opay, Palmpay, bKash, GCash, Airtel Money and more.'},
+  {q:['bank','transfer','swift','iban'],a:'Bank transfers are supported to all 40+ countries. Just select your country and choose "Bank Transfer" as your method. We'll ask for account details.'},
+  {q:['minimum','maximum','limit'],a:'Minimum transfer is $10. Maximum is $50,000 per transaction. For higher limits, contact our support team.'},
+  {q:['support','help','contact'],a:'Our team is available 24/7. Email us at support@arrtrading.com or use this chat. We usually respond within minutes.'},
+  {q:['crypto','bitcoin','btc','usdt'],a:'Yes! We support Bitcoin (BTC) and USDT on TRC20 and ERC20 networks. Select "Crypto" as your destination.'},
+  {q:['nigeria','nigerian','naira','ngn'],a:'Nigeria is our most popular destination. We support bank transfers (GTBank, Zenith, Access, UBA) and mobile money (Opay, Palmpay, Kuda). Rate: ~₦1,580/$1.'},
+];
+
+function getAIReply(msg){
+  const m=msg.toLowerCase();
+  for(const item of AI_KB){
+    if(item.q.some(kw=>m.includes(kw))) return item.a;
   }
+  return "I'm not sure about that specifically — but our team can help! Email support@arrtrading.com or try rephrasing your question. You can also start a transfer anytime from our home page 👆";
+}
 
-  function selectHeroMethod(el, name) {
-    document.querySelectorAll('#hero-methods .method-item').forEach(m => m.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedMethod = name;
+function toggleAIChat(){
+  const w=document.getElementById('ai-chat-window');
+  w.classList.toggle('open');
+}
+function sendAI(){
+  const inp=document.getElementById('ai-input');
+  const msg=inp.value.trim(); if(!msg) return;
+  const msgs=document.getElementById('ai-messages');
+  msgs.innerHTML+=`<div class="ai-msg user">${escHtml(msg)}</div>`;
+  inp.value='';
+  msgs.innerHTML+=`<div class="ai-msg typing" id="ai-typing"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    const t=document.getElementById('ai-typing'); if(t) t.remove();
+    const reply=getAIReply(msg);
+    msgs.innerHTML+=`<div class="ai-msg bot">${escHtml(reply)}</div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  },900+Math.random()*600);
+}
+
+// ─── ADMIN AI ───
+const ADMIN_AI_KB=[
+  {q:['transaction','volume','today'],a:'📊 Today: 347 transactions, $84,320 total volume, $1,264 in fees collected. Top country: Nigeria (38%), India (22%), Kenya (14%).'},
+  {q:['user','users','registered'],a:'👥 Total registered users: 1,284. New today: 23. Most active users are in Nigeria, Ghana, and India.'},
+  {q:['rate','exchange','update'],a:'💱 To update exchange rates, go to the "Exchange Rates" tab. Enter new values and click "Save All Rates". Changes apply immediately to new transfers.'},
+  {q:['pending','failed','stuck'],a:'⚠️ Currently 8 pending and 2 failed transactions. To manage them, go to the Transactions tab and filter by status.'},
+  {q:['fee','revenue','profit'],a:'💰 Current fee is 1.5%. Monthly revenue from fees: ~$38,400. You can adjust this in Settings → Fees & Pricing.'},
+  {q:['p2p','enable'],a:'🔄 P2P is currently disabled. Go to Settings → Features → toggle "P2P Trading" to enable it when you\'re ready to launch.'},
+  {q:['settings','config','change'],a:'⚙️ Head to the Settings tab to configure site name, fees, transfer limits, and toggle features like P2P and guest transfers.'},
+  {q:['suspend','ban','block user'],a:'🚫 Go to the Users tab, find the user, and their status shows "Active" or "Suspended". Click the status to toggle. (Full user management coming in v2)'},
+  {q:['security','breach','hack'],a:'🔐 All data uses 256-bit SSL. Admin access is protected by credentials you set. I recommend changing your admin password regularly in Settings.'},
+];
+
+function getAdminAIReply(msg){
+  const m=msg.toLowerCase();
+  for(const item of ADMIN_AI_KB){
+    if(item.q.some(kw=>m.includes(kw))) return item.a;
   }
+  return '🤖 I can help with transactions, users, rates, settings, and system management. Try asking: "How many transactions today?", "How do I update rates?", or "Show me pending transfers."';
+}
+function sendAdminAI(){
+  const inp=document.getElementById('admin-ai-input');
+  const msg=inp.value.trim(); if(!msg) return;
+  const msgs=document.getElementById('admin-ai-messages');
+  msgs.innerHTML+=`<div class="ai-msg user">${escHtml(msg)}</div>`;
+  inp.value='';
+  msgs.innerHTML+=`<div class="ai-msg typing" id="admin-ai-typing"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    const t=document.getElementById('admin-ai-typing'); if(t) t.remove();
+    const reply=getAdminAIReply(msg);
+    msgs.innerHTML+=`<div class="ai-msg bot">${escHtml(reply)}</div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  },700+Math.random()*500);
+}
 
-  function setAmount(val, btn) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('hero-amount').value = val;
-    sendAmount = val;
-  }
+function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
-  function scrollToCountries() {
-    document.getElementById('countries').scrollIntoView({behavior:'smooth'});
-  }
-
-  function quickSelectCountry(code) {
-    const sel = document.getElementById('hero-country');
-    sel.value = code;
-    updateHeroMethods();
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-
-  function proceedToCheckout() {
-    const sel = document.getElementById('hero-country');
-    const amt = parseFloat(document.getElementById('hero-amount').value) || 0;
-
-    if (!sel.value) { alert('Please select a destination country.'); return; }
-    if (amt < 10) { alert('Minimum transfer amount is $10.'); return; }
-
-    selectedCountry = sel.value;
-    sendAmount = amt;
-    buildCheckoutPage();
-    showPage('page-checkout');
-  }
-
-  // ─── CHECKOUT ───
-  function buildCheckoutPage() {
-    const data = COUNTRY_DATA[selectedCountry];
-    const fee = +(sendAmount * FEE_RATE).toFixed(2);
-    const net = sendAmount - fee;
-    const received = (net * data.rate).toLocaleString(undefined,{maximumFractionDigits:0});
-
-    // Summary
-    document.getElementById('summary-flag').textContent = data.flag;
-    document.getElementById('summary-country-name').textContent = data.name + ' (' + data.currency + ')';
-    document.getElementById('summary-send').textContent = '$' + sendAmount.toFixed(2);
-    document.getElementById('summary-fee').textContent = '$' + fee;
-    document.getElementById('summary-receive').textContent = received + ' ' + data.currency;
-    document.getElementById('summary-delivery').textContent = data.methods[0].speed;
-    document.getElementById('summary-method').textContent = selectedMethod || data.methods[0].name;
-
-    // Payment methods
-    const pm = document.getElementById('checkout-methods');
-    pm.innerHTML = data.methods.map((m,i) => `
-      <div class="pm-item${i===0?' selected':''}" onclick="selectCheckoutMethod(this,'${m.name}','${m.speed}')">
-        <div class="pm-left">
-          <span class="pm-icon">${m.icon}</span>
-          <div><div class="pm-name">${m.name}</div><div class="pm-sub">${m.sub} · ${m.speed}</div></div>
-        </div>
-        <i class="fas fa-circle-check pm-check"></i>
-      </div>`).join('');
-
-    // Bank fields
-    buildBankFields(selectedCountry);
-
-    // Ref number
-    document.getElementById('ref-number').textContent = 'ARR-' + Date.now().toString().slice(-8);
-  }
-
-  function selectCheckoutMethod(el, name, speed) {
-    document.querySelectorAll('#checkout-methods .pm-item').forEach(m => m.classList.remove('selected'));
-    el.classList.add('selected');
-    document.getElementById('summary-method').textContent = name;
-    document.getElementById('summary-delivery').textContent = speed;
-  }
-
-  function buildBankFields(code) {
-    const container = document.getElementById('bank-fields-container');
-    let html = '';
-    if (code === 'NG' || code === 'GH' || code === 'ZA' || code === 'ET' || code === 'EG' || code === 'MA') {
-      html = `
-        <div class="checkout-field"><label>Bank Name</label><select><option>Select bank</option></select></div>
-        <div class="checkout-field"><label>Account Number</label><input type="text" placeholder="0123456789"/></div>
-        <div class="checkout-field"><label>Account Name</label><input type="text" placeholder="As on bank records"/></div>`;
-    } else if (code === 'KE' || code === 'UG' || code === 'TZ' || code === 'RW' || code === 'SN' || code === 'CI' || code === 'CM' || code === 'BD' || code === 'PK') {
-      html = `
-        <div class="checkout-field"><label>Mobile Wallet Number</label><input type="tel" placeholder="+XXX XXXX XXXXX"/></div>
-        <div class="checkout-field"><label>Wallet Provider</label><input type="text" placeholder="e.g. M-PESA, bKash"/></div>`;
-    } else if (code === 'IN') {
-      html = `
-        <div class="checkout-field"><label>UPI ID or Phone</label><input type="text" placeholder="name@upi or +91 XXXXX XXXXX"/></div>`;
-    } else if (code === 'BR') {
-      html = `
-        <div class="checkout-field"><label>PIX Key (CPF, Phone or Email)</label><input type="text" placeholder="Enter PIX key"/></div>`;
-    } else if (code === 'NG-BTC') {
-      html = `
-        <div class="checkout-field"><label>Wallet Address</label><input type="text" placeholder="BTC/USDT wallet address"/></div>
-        <div class="checkout-field"><label>Network</label><select><option>Bitcoin</option><option>TRC20 (Tron)</option><option>ERC20 (Ethereum)</option></select></div>`;
-    } else {
-      html = `
-        <div class="checkout-field"><label>Bank Name</label><input type="text" placeholder="Recipient's bank"/></div>
-        <div class="checkout-field"><label>IBAN / Account Number</label><input type="text" placeholder="Account or IBAN"/></div>
-        <div class="checkout-field"><label>SWIFT / BIC</label><input type="text" placeholder="SWIFT code (if required)"/></div>`;
-    }
-    container.innerHTML = html;
-  }
+// Enter keys for AI
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('ai-input')?.addEventListener('keydown',e=>e.key==='Enter'&&sendAI());
+  document.getElementById('admin-ai-input')?.addEventListener('keydown',e=>e.key==='Enter'&&sendAdminAI());
+  document.getElementById('admin-pass')?.addEventListener('keydown',e=>e.key==='Enter'&&adminLogin());
+});
 </script>
 </body>
 </html>
