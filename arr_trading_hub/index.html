@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARR Trading Hub – Send USD Payments Securely Worldwide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #16a34a; --green-dark: #15803d; --green-light: #22c55e;
+      --green-pale: #f0fdf4; --green-mid: #dcfce7;
+      --gray-200: #e5e7eb; --gray-400: #9ca3af; --gray-600: #4b5563;
+      --gray-700: #374151; --gray-900: #111827;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-900); background: #fff; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff; border-bottom: 1px solid var(--gray-200);
+      padding: 0 5%; height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 17px;
+    }
+    .logo-text { font-size: 1.15rem; font-weight: 700; color: var(--gray-900); }
+    .logo-text span { color: var(--green); }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--gray-600); font-size: 0.88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: #fff;
+      padding: 9px 20px; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.88rem;
+      transition: background .2s; cursor: pointer; border: none; font-family: inherit;
+    }
+    .nav-cta:hover { background: var(--green-dark); }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .hero { display: flex; flex-wrap: wrap; min-height: 580px; overflow: hidden; }
+    .hero-left {
+      flex: 1; min-width: 300px;
+      background: linear-gradient(150deg, #031a0d 0%, #052e16 30%, #14532d 65%, #166534 100%);
+      padding: 88px 56px 88px 5%;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      border: 70px solid rgba(255,255,255,0.04);
+    }
+    .hero-left::after {
+      content: ''; position: absolute; bottom: -80px; left: -40px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(74,222,128,0.06);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(74,222,128,0.15); color: #86efac;
+      padding: 7px 15px; border-radius: 30px;
+      font-size: 0.78rem; font-weight: 700; margin-bottom: 28px;
+      border: 1px solid rgba(74,222,128,0.25);
+      width: fit-content; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .hero-left h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900;
+      line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 24px; color: #fff;
+    }
+    .hero-left h1 .line-accent { display: block; color: #4ade80; text-shadow: 0 0 40px rgba(74,222,128,0.4); }
+    .hero-left h1 .line-sub {
+      display: block; color: rgba(255,255,255,0.6);
+      font-size: 0.6em; font-weight: 600; letter-spacing: 0.01em; margin-top: 8px;
+    }
+    .hero-desc { color: #a7f3d0; font-size: 1rem; line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
+    .btn-hero {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #4ade80; color: #052e16;
+      padding: 15px 32px; border-radius: 12px;
+      font-weight: 800; font-size: 1rem; text-decoration: none; width: fit-content;
+      box-shadow: 0 8px 28px rgba(74,222,128,0.45);
+      transition: all .2s; letter-spacing: 0.01em; cursor: pointer; border: none; font-family: inherit;
+    }
+    .btn-hero:hover { background: #86efac; transform: translateY(-2px); }
+    .hero-perks { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+    .perk {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      padding: 7px 14px; border-radius: 8px; color: #bbf7d0; font-size: 0.78rem; font-weight: 600;
+    }
+    .perk i { color: #4ade80; font-size: 0.82rem; }
+
+    /* RIGHT PANEL */
+    .hero-right {
+      width: 420px; flex-shrink: 0; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 5% 40px 36px;
+      border-left: 1px solid var(--gray-200);
+    }
+    .hero-card {
+      background: #fff; border-radius: 20px; padding: 24px;
+      width: 100%; max-width: 360px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.04);
+    }
+    .card-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;
+    }
+    .card-header h3 { font-size: 1rem; font-weight: 800; color: var(--gray-900); }
+    .secure-badge {
+      background: var(--green-mid); color: var(--green-dark);
+      font-size: 0.68rem; font-weight: 700; padding: 3px 9px;
+      border-radius: 6px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .amount-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .amount-btn {
+      border: 2px solid var(--gray-200); background: #fff;
+      border-radius: 9px; padding: 9px; text-align: center;
+      cursor: pointer; font-weight: 700; font-size: 0.92rem;
+      color: var(--gray-700); transition: all .2s; font-family: inherit;
+    }
+    .amount-btn:hover, .amount-btn.active { border-color: var(--green); color: var(--green); background: var(--green-pale); }
+    .field {
+      width: 100%; border: 2px solid var(--gray-200); border-radius: 9px;
+      padding: 9px 12px; font-size: 0.88rem; font-family: inherit;
+      margin-bottom: 11px; outline: none; transition: border .2s; color: var(--gray-900);
+      background: #fff;
+    }
+    .field:focus { border-color: var(--green); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .field-row .field { margin-bottom: 0; }
+    .field-row-wrap { margin-bottom: 11px; }
+
+    .methods-label {
+      font-size: 0.75rem; font-weight: 700; color: var(--gray-600);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      margin-bottom: 8px; margin-top: 2px;
+    }
+    .methods-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+    .method-item {
+      display: flex; align-items: center; justify-content: space-between;
+      border: 2px solid var(--gray-200); border-radius: 9px;
+      padding: 9px 12px; cursor: pointer; transition: all .2s; background: #fff;
+    }
+    .method-item:hover { border-color: var(--green); background: var(--green-pale); }
+    .method-item.selected { border-color: var(--green); background: var(--green-pale); }
+    .method-left { display: flex; align-items: center; gap: 9px; }
+    .method-icon { font-size: 1.1rem; width: 22px; text-align: center; }
+    .method-name { font-size: 0.85rem; font-weight: 600; color: var(--gray-900); }
+    .method-speed { font-size: 0.7rem; color: var(--gray-400); margin-top: 1px; }
+    .method-check { color: var(--green); font-size: 0.85rem; opacity: 0; transition: opacity .2s; }
+    .method-item.selected .method-check { opacity: 1; }
+
+    .pay-btn {
+      width: 100%; background: var(--green); color: #fff;
+      border: none; border-radius: 10px; padding: 13px;
+      font-size: 0.97rem; font-weight: 800; cursor: pointer;
+      font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all .2s; box-shadow: 0 4px 16px rgba(22,163,74,0.3);
+    }
+    .pay-btn:hover:not(:disabled) { background: var(--green-dark); transform: translateY(-1px); }
+    .pay-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .card-note { text-align: center; color: var(--gray-400); font-size: 0.72rem; margin-top: 9px; }
+
+    /* FEE DISPLAY */
+    .fee-row {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--green-pale); border: 1px solid var(--green-mid);
+      border-radius: 8px; padding: 8px 12px; margin-bottom: 11px; font-size: 0.82rem;
+    }
+    .fee-row span { color: var(--gray-600); }
+    .fee-row strong { color: var(--green-dark); font-weight: 700; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #fff; border-radius: 20px; padding: 32px;
+      max-width: 420px; width: 100%; position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn { from { opacity:0; transform:scale(.95) translateY(10px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--gray-200); border: none; border-radius: 50%;
+      width: 30px; height: 30px; cursor: pointer; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .modal-close:hover { background: var(--gray-400); }
+    .modal h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 6px; }
+    .modal p { color: var(--gray-600); font-size: 0.88rem; margin-bottom: 20px; line-height: 1.6; }
+    .modal .field { margin-bottom: 12px; }
+    .modal-btn {
+      width: 100%; background: var(--green); color: #fff; border: none;
+      border-radius: 10px; padding: 13px; font-size: 0.97rem; font-weight: 800;
+      cursor: pointer; font-family: inherit; transition: all .2s;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.3);
+    }
+    .modal-btn:hover:not(:disabled) { background: var(--green-dark); }
+    .modal-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .modal-error {
+      background: #fef2f2; border: 1px solid #fecaca; color: #dc2626;
+      border-radius: 8px; padding: 10px 14px; font-size: 0.82rem; margin-bottom: 12px; display: none;
+    }
+
+    /* SUCCESS STATE */
+    .success-state { text-align: center; padding: 20px 0; }
+    .success-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--green-mid); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 1.8rem; color: var(--green);
+    }
+    .success-state h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .success-state p { color: var(--gray-600); font-size: 0.88rem; line-height: 1.6; }
+    .tx-ref-box {
+      background: var(--green-pale); border: 1px solid var(--green-mid);
+      border-radius: 8px; padding: 10px 14px; margin: 14px 0;
+      font-size: 0.78rem; color: var(--green-dark); font-weight: 700; font-family: monospace;
+    }
+
+    /* STATS */
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; border-bottom: 1px solid var(--gray-200); background: #fff; }
+    .stat { text-align: center; padding: 28px 36px; border-right: 1px solid var(--gray-200); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 1.9rem; font-weight: 800; color: var(--green); }
+    .stat-label { color: var(--gray-600); font-size: 0.82rem; margin-top: 3px; }
+
+    /* HOW IT WORKS */
+    .how { background: #f9fafb; padding: 72px 5%; }
+    .section-hdr { text-align: center; margin-bottom: 48px; }
+    .tag {
+      display: inline-block; background: var(--green-mid); color: var(--green-dark);
+      padding: 4px 13px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .05em; margin-bottom: 12px;
+    }
+    .section-hdr h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 10px; }
+    .section-hdr p { color: var(--gray-600); font-size: 0.95rem; max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; max-width: 860px; margin: 0 auto; }
+    .step { background: #fff; border-radius: 14px; padding: 28px 20px; text-align: center; box-shadow: var(--shadow); position: relative; }
+    .step-num {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green); color: #fff; font-size: 0.78rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-icon { font-size: 1.8rem; margin-bottom: 14px; margin-top: 8px; }
+    .step h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 7px; }
+    .step p { color: var(--gray-600); font-size: 0.82rem; line-height: 1.6; }
+
+    /* TRUST */
+    .trust { padding: 72px 5%; background: #fff; }
+    .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+    .trust-card {
+      border: 1px solid var(--gray-200); border-radius: 14px; padding: 24px;
+      transition: box-shadow .2s;
+    }
+    .trust-card:hover { box-shadow: var(--shadow); }
+    .trust-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: var(--green-pale); display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 14px; color: var(--green);
+    }
+    .trust-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 7px; }
+    .trust-card p { color: var(--gray-600); font-size: 0.82rem; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a; color: #94a3b8;
+      padding: 40px 5%; text-align: center; font-size: 0.82rem;
+    }
+    footer .footer-logo { color: #fff; font-weight: 800; font-size: 1rem; margin-bottom: 10px; }
+    footer a { color: #64748b; text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: #94a3b8; }
+    .footer-links { margin: 14px 0 10px; }
+
+    /* SPINNER */
+    .spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin .7s linear infinite; display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ADMIN HIDDEN LINK */
+    #admin-trigger { position: fixed; bottom: 0; right: 0; width: 40px; height: 40px; z-index: 9999; cursor: default; }
+
+    @media (max-width: 768px) {
+      .hero-right { width: 100%; padding: 32px 5%; border-left: none; border-top: 1px solid var(--gray-200); }
+      .hero-left { padding: 60px 5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">A</div>
+    <span class="logo-text">ARR <span>Trading Hub</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#trust">Security</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="openPayModal()">Send Money</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><i class="fa fa-shield-halved"></i> Secure &amp; Verified Platform</div>
+    <h1>
+      Send USD
+      <span class="line-accent">Worldwide</span>
+      <span class="line-sub">Fast · Secure · Reliable</span>
+    </h1>
+    <p class="hero-desc">Transfer funds globally with bank-grade security. Real-time processing, competitive rates, and 24/7 support — built for individuals and businesses alike.</p>
+    <button class="btn-hero" onclick="openPayModal()">
+      <i class="fa fa-paper-plane"></i> Start Transfer
+    </button>
+    <div class="hero-perks">
+      <div class="perk"><i class="fa fa-bolt"></i> Instant Processing</div>
+      <div class="perk"><i class="fa fa-lock"></i> Encrypted</div>
+      <div class="perk"><i class="fa fa-globe"></i> 50+ Countries</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-header">
+        <h3>Quick Transfer</h3>
+        <span class="secure-badge"><i class="fa fa-lock"></i> Secure</span>
+      </div>
+
+      <!-- Amount Selector -->
+      <div class="amount-grid" id="amountBtns">
+        <button class="amount-btn" onclick="selectAmount(100)">$100</button>
+        <button class="amount-btn" onclick="selectAmount(250)">$250</button>
+        <button class="amount-btn" onclick="selectAmount(500)">$500</button>
+        <button class="amount-btn" onclick="selectAmount(1000)">$1,000</button>
+      </div>
+      <input class="field" type="number" id="customAmount" placeholder="Or enter custom amount (USD)" min="10" oninput="updateFee()" />
+
+      <div class="fee-row" id="feeRow" style="display:none">
+        <span>Service fee (1.5%)</span>
+        <strong id="feeDisplay">$0.00</strong>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="methods-label">Payment Method</div>
+      <div class="methods-list">
+        <div class="method-item selected" onclick="selectMethod(this,'card')" data-method="card">
+          <div class="method-left">
+            <span class="method-icon">💳</span>
+            <div><div class="method-name">Card Payment</div><div class="method-speed">Instant</div></div>
+          </div>
+          <i class="fa fa-check method-check"></i>
+        </div>
+        <div class="method-item" onclick="selectMethod(this,'bank_transfer')" data-method="bank_transfer">
+          <div class="method-left">
+            <span class="method-icon">🏦</span>
+            <div><div class="method-name">Bank Transfer</div><div class="method-speed">1–2 hours</div></div>
+          </div>
+          <i class="fa fa-check method-check"></i>
+        </div>
+        <div class="method-item" onclick="selectMethod(this,'ussd')" data-method="ussd">
+          <div class="method-left">
+            <span class="method-icon">📱</span>
+            <div><div class="method-name">USSD / Mobile</div><div class="method-speed">Instant</div></div>
+          </div>
+          <i class="fa fa-check method-check"></i>
+        </div>
+      </div>
+
+      <button class="pay-btn" id="heroPayBtn" onclick="openPayModal()">
+        <i class="fa fa-paper-plane"></i> Continue to Payment
+      </button>
+      <div class="card-note"><i class="fa fa-shield-halved"></i> 256-bit SSL encrypted · Your data is safe</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">$2.4B+</div><div class="stat-label">Processed Volume</div></div>
+  <div class="stat"><div class="stat-num">180+</div><div class="stat-label">Countries Supported</div></div>
+  <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Uptime SLA</div></div>
+  <div class="stat"><div class="stat-num">2.1M+</div><div class="stat-label">Transactions</div></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-hdr">
+    <span class="tag">Simple Process</span>
+    <h2>How It Works</h2>
+    <p>Send money globally in three easy steps. Fast, secure, and always on time.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-icon">📋</div><h4>Enter Details</h4><p>Fill in the transfer amount, your info, and recipient details.</p></div>
+    <div class="step"><div class="step-num">2</div><div class="step-icon">💳</div><h4>Make Payment</h4><p>Pay securely via card, bank transfer, or USSD — no redirects.</p></div>
+    <div class="step"><div class="step-num">3</div><div class="step-icon">⚡</div><h4>Money Delivered</h4><p>Recipient receives funds instantly or within 1–2 hours.</p></div>
+    <div class="step"><div class="step-num">4</div><div class="step-icon">✅</div><h4>Confirmation</h4><p>Get a transaction receipt and reference ID immediately.</p></div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust" id="trust">
+  <div class="section-hdr">
+    <span class="tag">Bank-Grade Security</span>
+    <h2>Why Trust ARR Trading Hub</h2>
+    <p>Built with enterprise-level security and compliance at its core.</p>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card"><div class="trust-icon"><i class="fa fa-shield-halved"></i></div><h4>256-bit Encryption</h4><p>All transactions and personal data are encrypted end-to-end using AES-256.</p></div>
+    <div class="trust-card"><div class="trust-icon"><i class="fa fa-user-check"></i></div><h4>KYC Verified</h4><p>Full identity verification for all accounts ensuring compliance and safety.</p></div>
+    <div class="trust-card"><div class="trust-icon"><i class="fa fa-clock-rotate-left"></i></div><h4>Real-Time Monitoring</h4><p>Every transaction is monitored 24/7 for fraud and anomalies.</p></div>
+    <div class="trust-card"><div class="trust-icon"><i class="fa fa-headset"></i></div><h4>24/7 Support</h4><p>Our support team is available around the clock to assist you.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-logo">ARR Trading Hub</div>
+  <p>Secure global payment solutions for individuals and businesses.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Support</a>
+  </div>
+  <p style="margin-top:10px">© 2025 ARR Trading Hub. All rights reserved.</p>
+</footer>
+
+<!-- HIDDEN ADMIN TRIGGER -->
+<div id="admin-trigger" ondblclick="window.location.href='/admin'"></div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="payModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePayModal()"><i class="fa fa-times"></i></button>
+
+    <!-- STEP 1: Details Form -->
+    <div id="step1">
+      <h3>💸 Send Payment</h3>
+      <p>Fill in your details to proceed with the secure transfer.</p>
+      <div class="modal-error" id="modalError"></div>
+
+      <input class="field" id="m_name" type="text" placeholder="Your full name" />
+      <input class="field" id="m_email" type="email" placeholder="Your email address" />
+      <input class="field" id="m_phone" type="tel" placeholder="Phone number (e.g. +2348001234567)" />
+
+      <div class="field-row field-row-wrap">
+        <input class="field" id="m_recipient" type="text" placeholder="Recipient name" />
+        <input class="field" id="m_country" type="text" placeholder="Destination country" />
+      </div>
+
+      <input class="field" id="m_amount" type="number" placeholder="Amount (USD) — min $10" min="10" oninput="updateModalFee()" />
+
+      <div class="fee-row" id="modalFeeRow" style="display:none">
+        <span>Service fee (1.5%)</span>
+        <strong id="modalFeeDisplay">$0.00</strong>
+      </div>
+
+      <button class="modal-btn" id="proceedBtn" onclick="initiatePayment()">
+        <i class="fa fa-lock"></i> Proceed to Secure Payment
+      </button>
+    </div>
+
+    <!-- STEP 2: Processing -->
+    <div id="step2" style="display:none; text-align:center; padding:20px 0;">
+      <div style="font-size:3rem; margin-bottom:16px;">⏳</div>
+      <h3 style="margin-bottom:8px;">Processing...</h3>
+      <p style="color:var(--gray-600); font-size:0.88rem;">Preparing your secure payment session. Please wait.</p>
+    </div>
+
+    <!-- STEP 3: Success -->
+    <div id="step3" style="display:none;">
+      <div class="success-state">
+        <div class="success-icon"><i class="fa fa-check"></i></div>
+        <h3>Payment Initiated!</h3>
+        <p>Your transaction has been created. Complete your payment in the secure window that just opened.</p>
+        <div class="tx-ref-box" id="txRefDisplay"></div>
+        <p style="font-size:0.8rem; color:var(--gray-400); margin-top:8px;">Save your transaction reference for tracking.</p>
+      </div>
+      <button class="modal-btn" onclick="closePayModal()" style="margin-top:16px; background:var(--gray-700);">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── State ──
+  let selectedAmount = null;
+  let selectedMethod = 'card';
+
+  const API_BASE = 'https://app.base44.com/api/apps/6a0c7d676fee8af5174c66b8/functions';
+
+  // ── Amount selector ──
+  function selectAmount(val) {
+    selectedAmount = val;
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.getElementById('customAmount').value = val;
+    updateFee();
+    // Sync modal amount
+    document.getElementById('m_amount').value = val;
+    updateModalFee();
+  }
+
+  function updateFee() {
+    const amt = parseFloat(document.getElementById('customAmount').value);
+    const feeRow = document.getElementById('feeRow');
+    if (amt >= 10) {
+      feeRow.style.display = 'flex';
+      document.getElementById('feeDisplay').textContent = '$' + (amt * 0.015).toFixed(2);
+    } else {
+      feeRow.style.display = 'none';
+    }
+  }
+
+  function updateModalFee() {
+    const amt = parseFloat(document.getElementById('m_amount').value);
+    const feeRow = document.getElementById('modalFeeRow');
+    if (amt >= 10) {
+      feeRow.style.display = 'flex';
+      document.getElementById('modalFeeDisplay').textContent = '$' + (amt * 0.015).toFixed(2);
+    } else {
+      feeRow.style.display = 'none';
+    }
+  }
+
+  function selectMethod(el, method) {
+    selectedMethod = method;
+    document.querySelectorAll('.method-item').forEach(m => m.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // ── Modal ──
+  function openPayModal() {
+    // Pre-fill amount if selected
+    const heroAmt = document.getElementById('customAmount').value;
+    if (heroAmt) document.getElementById('m_amount').value = heroAmt;
+    updateModalFee();
+    document.getElementById('payModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    showStep(1);
+  }
+
+  function closePayModal() {
+    document.getElementById('payModal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showStep(n) {
+    ['step1','step2','step3'].forEach((id, i) => {
+      document.getElementById(id).style.display = (i + 1 === n) ? 'block' : 'none';
+    });
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('modalError');
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function hideError() {
+    document.getElementById('modalError').style.display = 'none';
+  }
+
+  // ── Payment Initiation ──
+  async function initiatePayment() {
+    hideError();
+
+    const name = document.getElementById('m_name').value.trim();
+    const email = document.getElementById('m_email').value.trim();
+    const phone = document.getElementById('m_phone').value.trim();
+    const recipient = document.getElementById('m_recipient').value.trim();
+    const country = document.getElementById('m_country').value.trim();
+    const amount = parseFloat(document.getElementById('m_amount').value);
+
+    if (!name) return showError('Please enter your full name.');
+    if (!email || !email.includes('@')) return showError('Please enter a valid email address.');
+    if (!amount || amount < 10) return showError('Minimum transfer amount is $10.');
+
+    const btn = document.getElementById('proceedBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Processing...';
+    showStep(2);
+
+    try {
+      const res = await fetch(`${API_BASE}/flwInitiate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount,
+          currency: 'USD',
+          customer_name: name,
+          customer_email: email,
+          customer_phone: phone,
+          destination_country: country,
+          destination_currency: 'NGN',
+          recipient_name: recipient,
+          payment_method: selectedMethod,
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.status === 'success' && data.payment_link) {
+        // Open payment link in new tab
+        window.open(data.payment_link, '_blank');
+
+        // Show success step
+        document.getElementById('txRefDisplay').textContent = 'Ref: ' + data.tx_ref;
+        showStep(3);
+      } else {
+        showStep(1);
+        showError(data.error || 'Payment could not be initiated. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa fa-lock"></i> Proceed to Secure Payment';
+      }
+
+    } catch (err) {
+      showStep(1);
+      showError('Network error. Please check your connection and try again.');
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa fa-lock"></i> Proceed to Secure Payment';
+    }
+  }
+
+  // Close modal on overlay click
+  document.getElementById('payModal').addEventListener('click', function(e) {
+    if (e.target === this) closePayModal();
+  });
+</script>
+</body>
+</html>
